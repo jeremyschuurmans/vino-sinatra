@@ -8,7 +8,7 @@ describe 'Wine' do
                         :vintage => "2016",
                         :origin => "Spain",
                         :price => "$9",
-                        :rating => "6",
+                        :rating => 6,
                         :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                         :other_notes => "Would pair well with dark chocolate")
   end
@@ -34,7 +34,7 @@ describe 'Wine' do
   end
 
   it 'has a rating' do
-    expect(@wine.rating).to eq("6")
+    expect(@wine.rating).to eq(6)
   end
 
   it 'has tasting notes' do

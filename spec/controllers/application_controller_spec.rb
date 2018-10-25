@@ -143,7 +143,7 @@ describe ApplicationController do
                           :vintage => "2017",
                           :origin => "Columbia Valley, Washington",
                           :price => "$12",
-                          :rating => "9",
+                          :rating => 9,
                           :tasting_notes => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.",
                           :other_notes => "Excellent on hot summer days.")
       wine2 = Wine.create(:name => "Charles & Charles Cabernet Blend",
@@ -151,7 +151,7 @@ describe ApplicationController do
                           :vintage => "2015",
                           :origin => "Columbia Valley, Washington",
                           :price => "$13",
-                          :rating => "9",
+                          :rating => 9,
                           :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                           :other_notes => "Great with grilled meats")
       get "/users/#{user.slug}"
@@ -170,7 +170,7 @@ describe ApplicationController do
                             :vintage => "2017",
                             :origin => "Columbia Valley, Washington",
                             :price => "$12",
-                            :rating => "9",
+                            :rating => 9,
                             :tasting_notes => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.",
                             :other_notes => "Excellent on hot summer days.")
         user2 = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
@@ -179,7 +179,7 @@ describe ApplicationController do
                             :vintage => "2015",
                             :origin => "Columbia Valley, Washington",
                             :price => "$13",
-                            :rating => "9",
+                            :rating => 9,
                             :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                             :other_notes => "Great with grilled meats")
 
@@ -231,7 +231,7 @@ describe ApplicationController do
         fill_in(:vintage, :with => "2017")
         fill_in(:origin, :with => "Columbia Valley, Washington")
         fill_in(:price, :with => "$12")
-        fill_in(:rating, :with => "9")
+        fill_in(:rating, :with => 9)
         fill_in(:tasting_notes, :with => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.")
         fill_in(:other_notes, :with => "Excellent on hot summer days.")
         click_button 'submit'
@@ -260,7 +260,7 @@ describe ApplicationController do
         fill_in(:vintage, :with => "2017")
         fill_in(:origin, :with => "Columbia Valley, Washington")
         fill_in(:price, :with => "$12")
-        fill_in(:rating, :with => "9")
+        fill_in(:rating, :with => 9)
         fill_in(:tasting_notes, :with => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.")
         fill_in(:other_notes, :with => "Excellent on hot summer days.")
         click_button 'submit'
@@ -317,7 +317,7 @@ describe ApplicationController do
                            :vintage => "2016",
                            :origin => "Spain",
                            :price => "$9",
-                           :rating => "6",
+                           :rating => 6,
                            :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                            :other_notes => "Would pair well with dark chocolate")
 
@@ -343,7 +343,7 @@ describe ApplicationController do
                            :vintage => "2016",
                            :origin => "Spain",
                            :price => "$9",
-                           :rating => "6",
+                           :rating => 6,
                            :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                            :other_notes => "Would pair well with dark chocolate",
                            :user_id => user.id)
@@ -362,7 +362,7 @@ describe ApplicationController do
                            :vintage => "2016",
                            :origin => "Spain",
                            :price => "$9",
-                           :rating => "6",
+                           :rating => 6,
                            :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                            :other_notes => "Would pair well with dark chocolate",
                            :user_id => user.id)
@@ -383,7 +383,7 @@ describe ApplicationController do
                             :vintage => "2016",
                             :origin => "Spain",
                             :price => "$9",
-                            :rating => "6",
+                            :rating => 6,
                             :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                             :other_notes => "Would pair well with dark chocolate",
                             :user_id => user1.id)
@@ -394,7 +394,7 @@ describe ApplicationController do
                             :vintage => "2015",
                             :origin => "Columbia Valley, Washington",
                             :price => "$13",
-                            :rating => "9",
+                            :rating => 9,
                             :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                             :other_notes => "Great with grilled meats",
                             :user_id => user2.id)
@@ -415,7 +415,7 @@ describe ApplicationController do
                            :vintage => "2015",
                            :origin => "Columbia Valley, Washington",
                            :price => "$13",
-                           :rating => "9",
+                           :rating => 9,
                            :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                            :other_notes => "Great with grilled meats",
                            :user_id => 1)
@@ -441,7 +441,7 @@ describe ApplicationController do
                            :vintage => "2015",
                            :origin => "Columbia Valley, Washington",
                            :price => "$13",
-                           :rating => "9",
+                           :rating => 9,
                            :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                            :other_notes => "Great with grilled meats",
                            :user_id => 1)
@@ -477,7 +477,7 @@ describe ApplicationController do
                            :vintage => "2015",
                            :origin => "Columbia Valley, Washington",
                            :price => "$13",
-                           :rating => "9",
+                           :rating => 9,
                            :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                            :other_notes => "Great with grilled meats",
                            :user_id => 1)
@@ -499,7 +499,7 @@ describe ApplicationController do
                             :vintage => "2016",
                             :origin => "Spain",
                             :price => "$9",
-                            :rating => "6",
+                            :rating => 6,
                             :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                             :other_notes => "Would pair well with dark chocolate",
                             :user_id => user1.id)
@@ -510,7 +510,7 @@ describe ApplicationController do
                             :vintage => "2015",
                             :origin => "Columbia Valley, Washington",
                             :price => "$13",
-                            :rating => "9",
+                            :rating => 9,
                             :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                             :other_notes => "Great with grilled meats",
                             :user_id => user2.id)
@@ -535,7 +535,7 @@ describe ApplicationController do
                             :vintage => "2016",
                             :origin => "Spain",
                             :price => "$9",
-                            :rating => "6",
+                            :rating => 6,
                             :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                             :other_notes => "Would pair well with dark chocolate",
                             :user_id => 1)
