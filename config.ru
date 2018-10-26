@@ -6,4 +6,4 @@ end
 
 run ApplicationController
 use UsersController
-# use WinesController
+use WinesController
