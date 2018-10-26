@@ -19,7 +19,7 @@ describe ApplicationController do
 
     it 'signup directs user to vino index' do
       params = {
-        :name => "Yukihiro Matzumoto"
+        :name => "Yukihiro Matzumoto",
         :username => "matz",
         :email => "matz@rubycentral.org",
         :password => "objectsobjectsobjects"
@@ -30,7 +30,7 @@ describe ApplicationController do
 
     it 'does not let a user sign up without a username' do
       params = {
-        :name => "Yukihiro Matzumoto"
+        :name => "Yukihiro Matzumoto",
         :username => "",
         :email => "matz@rubycentral.org",
         :password => "objectsobjectsobjects"
@@ -41,7 +41,7 @@ describe ApplicationController do
 
     it 'does not let a user sign up without an email' do
       params = {
-        :name => "Yukihiro Matzumoto"
+        :name => "Yukihiro Matzumoto",
         :username => "matz",
         :email => "",
         :password => "objectsobjectsobjects"
@@ -52,7 +52,7 @@ describe ApplicationController do
 
     it 'does not let a user sign up without a password' do
       params = {
-        :name => "Yukihiro Matzumoto"
+        :name => "Yukihiro Matzumoto",
         :username => "matz",
         :email => "matz@rubycentral.org",
         :password => ""
@@ -64,7 +64,7 @@ describe ApplicationController do
     it 'does not let a logged in user view the signup page' do
       user = User.create(:name => "Yukihiro Matzumoto", :username => "matz", :email => "matz@rubycentral.org", :password => "objectsobjectsobjects")
       params = {
-        :name => "Yukihiro Matzumoto"
+        :name => "Yukihiro Matzumoto",
         :username => "matz",
         :email => "matz@rubycentral.org",
         :password => "objectsobjectsobjects"

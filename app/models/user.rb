@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    #return the instance of user equal to the slug
-    User.find { |user| user.slug == slug }
+    User.find { |user| user.slug == slug }  #return the instance of user equal to the slug
   end
 end
