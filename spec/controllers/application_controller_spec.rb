@@ -150,7 +150,8 @@ describe ApplicationController do
                           :price => "$12",
                           :rating => 9,
                           :tasting_notes => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.",
-                          :other_notes => "Excellent on hot summer days.")
+                          :other_notes => "Excellent on hot summer days.",
+                          :user_id => user.id)
       wine2 = Wine.create(:name => "Charles & Charles Cabernet Blend",
                           :winery => "Charles & Charles",
                           :vintage => "2015",
@@ -158,11 +159,11 @@ describe ApplicationController do
                           :price => "$13",
                           :rating => 9,
                           :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
-                          :other_notes => "Great with grilled meats")
+                          :other_notes => "Great with grilled meats",
+                          :user_id => user.id)
       get "/users/#{user.slug}"
-      expect(last_response.body).to include("Columbia Valley, Washington")
-      expect(last_response.body).to include("2015")
-
+      expect(last_response.body).to include("Charles & Charles Rose")
+      expect(last_response.body).to include("Charles & Charles Cabernet Blend")
     end
   end
 
@@ -177,7 +178,8 @@ describe ApplicationController do
                             :price => "$12",
                             :rating => 9,
                             :tasting_notes => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.",
-                            :other_notes => "Excellent on hot summer days.")
+                            :other_notes => "Excellent on hot summer days.",
+                            :user_id => user.id)
         user2 = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine2 = Wine.create(:name => "Charles & Charles Cabernet Blend",
                             :winery => "Charles & Charles",
@@ -186,16 +188,17 @@ describe ApplicationController do
                             :price => "$13",
                             :rating => 9,
                             :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
-                            :other_notes => "Great with grilled meats")
+                            :other_notes => "Great with grilled meats",
+                            :user_id => user2.id)
 
         visit '/login'
 
-        fill_in(:username, :with => "matz")
-        fill_in(:password, :with => "objectsobjectsobjects")
+        fill_in(:username, :with => "hpotter")
+        fill_in(:password, :with => "quidditch")
         click_button 'submit'
         visit "/wines"
-        expect(page.body).to include(wine1.content)
-        expect(page.body).to include(wine2.content)
+        expect(page.body).to include(wine1.origin)
+        expect(page.body).to include(wine2.origin)
       end
     end
 
@@ -242,7 +245,7 @@ describe ApplicationController do
         click_button 'submit'
 
         user = User.find_by(:username => "hpotter")
-        tweet = Tweet.find_by(:name => "Charles & Charles Rose")
+        wine = Wine.find_by(:name => "Charles & Charles Rose")
         expect(wine).to be_instance_of(Wine)
         expect(wine.user_id).to eq(user.id)
         expect(page.status_code).to eq(200)
@@ -332,7 +335,7 @@ describe ApplicationController do
         fill_in(:password, :with => "quidditch")
         click_button 'submit'
 
-        visit "/tweets/#{tweet.id}"
+        visit "/wines/#{wine.id}"
         expect(page.status_code).to eq(200)
         expect(page.body).to include("Delete Wine")
         expect(page.body).to include(wine.tasting_notes)
@@ -352,7 +355,7 @@ describe ApplicationController do
                            :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                            :other_notes => "Would pair well with dark chocolate",
                            :user_id => user.id)
-        get "/tweets/#{tweet.id}"
+        get "/wines/#{wine.id}"
         expect(last_response.location).to include("/login")
       end
     end
