@@ -1,7 +1,10 @@
 class WinesController < ApplicationController
 
   get '/wines' do
-    # @user = User.find(id: params[:user_id])
-    erb :'wines/wines'
+    if logged_in
+      erb :'wines/wines'
+    else
+      redirect '/login'
+    end
   end
 end
