@@ -1,13 +1,13 @@
 <ol>
   <li>
-    <%= @wine.name %><br>
-    <%= @wine.winery %><br>
-    <%= @wine.vintage %><br>
-    <%= @wine.origin %><br>
-    <%= @wine.price %><br>
-    <%= @wine.rating %><br>
-    <%= @wine.tasting_notes %><br>
-    <%= @wine.other_notes %><br>
+    Name: <%= @wine.name %><br>
+    Winery: <%= @wine.winery %><br>
+    Vintage: <%= @wine.vintage %><br>
+    Origin: <%= @wine.origin %><br>
+    Price: <%= @wine.price %><br>
+    Rating: <%= @wine.rating %><br>
+    Tasting Notes: <%= @wine.tasting_notes %><br>
+    Other Thoughts: <%= @wine.other_notes %><br>
   </li>
 </ol>
 
@@ -17,3 +17,5 @@
 </form>
   <br></br>
 <a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
+  <br></br>
+<a href="/wines">BACK TO MAIN WINE LIST</a>

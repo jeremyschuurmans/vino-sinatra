@@ -1,18 +1,17 @@
-<p>You are in /wines</p>
-<!-- <p>Welcome,<%#=@user.username%></p> -->
-
 <ol>
 <% @wines.each do |wine| %>
 <li>
-  <%= wine.name %>
-  <%= wine.winery %>
-  <%= wine.vintage %>
-  <%= wine.origin %>
-  <%= wine.price %>
-  <%= wine.rating %>
-  <%= wine.tasting_notes %>
-  <%= wine.other_notes %>
+  <a href='wines/<%=wine.id%>'><%= wine.name %></a><br>
+  <%= wine.winery %><br>
+  <%= wine.vintage %><br>
+  <%= wine.tasting_notes %><br>
 </li>
 <% end %>
 
 </ol>
+
+<a href='/wines/new'>CREATE A NEW WINE</a>
+<br></br>
+<a href='/users/<%=@user.slug%>'>VIEW YOUR WINES</a>
+<br></br>
+<a href='/logout'>LOGOUT</a>
