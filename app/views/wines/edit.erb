@@ -1,0 +1,15 @@
+<fieldset>
+  <legend>EDIT WINE</legend>
+    <form method="POST" action="/wines/<%=@wine.id%>">
+      <input id="hidden" type="hidden" name="_method" value="PATCH">
+      <input type="text" name="name" value="<%=@wine.name%>"><br>
+      <input type="text" name="winery" value="<%=@wine.winery%>"><br>
+      <input type="text" name="vintage" value="<%=@wine.vintage%>"><br>
+      <input type="text" name="origin" value="<%=@wine.origin%>"><br>
+      <input type="text" name="price"  value="<%=@wine.price%>"><br>
+      <input type="text" name="rating" value="<%=@wine.rating%>"><br>
+      <input type="text" name="tasting_notes" value="<%=@wine.tasting_notes%>"><br>
+      <input type="text" name="other_notes" value="<%=@wine.other_notes%>"><br>
+      <input type="submit" value="submit">
+    </form>
+</fieldset>
