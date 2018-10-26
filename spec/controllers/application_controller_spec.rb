@@ -19,6 +19,7 @@ describe ApplicationController do
 
     it 'signup directs user to vino index' do
       params = {
+        :name => "Yukihiro Matzumoto"
         :username => "matz",
         :email => "matz@rubycentral.org",
         :password => "objectsobjectsobjects"
@@ -29,6 +30,7 @@ describe ApplicationController do
 
     it 'does not let a user sign up without a username' do
       params = {
+        :name => "Yukihiro Matzumoto"
         :username => "",
         :email => "matz@rubycentral.org",
         :password => "objectsobjectsobjects"
@@ -39,6 +41,7 @@ describe ApplicationController do
 
     it 'does not let a user sign up without an email' do
       params = {
+        :name => "Yukihiro Matzumoto"
         :username => "matz",
         :email => "",
         :password => "objectsobjectsobjects"
@@ -49,6 +52,7 @@ describe ApplicationController do
 
     it 'does not let a user sign up without a password' do
       params = {
+        :name => "Yukihiro Matzumoto"
         :username => "matz",
         :email => "matz@rubycentral.org",
         :password => ""
@@ -58,8 +62,9 @@ describe ApplicationController do
     end
 
     it 'does not let a logged in user view the signup page' do
-      user = User.create(:username => "matz", :email => "matz@rubycentral.org", :password => "objectsobjectsobjects")
+      user = User.create(:name => "Yukihiro Matzumoto", :username => "matz", :email => "matz@rubycentral.org", :password => "objectsobjectsobjects")
       params = {
+        :name => "Yukihiro Matzumoto"
         :username => "matz",
         :email => "matz@rubycentral.org",
         :password => "objectsobjectsobjects"
@@ -77,7 +82,7 @@ describe ApplicationController do
     end
 
     it 'loads the wines index after login' do
-      user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+      user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
       params = {
         :username => "hpotter",
         :password => "quidditch"
@@ -90,7 +95,7 @@ describe ApplicationController do
     end
 
     it 'does not let user view login page if already logged in' do
-      user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+      user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
       params = {
         :username => "hpotter",
         :password => "quidditch"
@@ -103,7 +108,7 @@ describe ApplicationController do
 
   describe "logout" do
     it "lets a user logout if they are already logged in" do
-      user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+      user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
       params = {
         :username => "hpotter",
         :password => "quidditch"
@@ -124,7 +129,7 @@ describe ApplicationController do
     end
 
     it 'does load /wines if user is logged in' do
-      user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+      user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
 
       visit '/login'
 
@@ -137,7 +142,7 @@ describe ApplicationController do
 
   describe 'user show page' do
     it 'shows wines owned by a single user' do
-      user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+      user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
       wine1 = Wine.create(:name => "Charles & Charles Rose",
                           :winery => "Charles & Charles",
                           :vintage => "2017",
@@ -164,7 +169,7 @@ describe ApplicationController do
   describe 'index action' do
     context 'logged in' do
       it 'lets a user view the wines index if logged in' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         wine1 = Wine.create(:name => "Charles & Charles Rose",
                             :winery => "Charles & Charles",
                             :vintage => "2017",
@@ -173,7 +178,7 @@ describe ApplicationController do
                             :rating => 9,
                             :tasting_notes => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.",
                             :other_notes => "Excellent on hot summer days.")
-        user2 = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user2 = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine2 = Wine.create(:name => "Charles & Charles Cabernet Blend",
                             :winery => "Charles & Charles",
                             :vintage => "2015",
@@ -205,7 +210,7 @@ describe ApplicationController do
   describe 'new action' do
     context 'logged in' do
       it 'lets user view new wine form if logged in' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
 
         visit '/login'
 
@@ -217,7 +222,7 @@ describe ApplicationController do
       end
 
       it 'lets user create a wine if they are logged in' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         visit '/login'
 
         fill_in(:username, :with => "hpotter")
@@ -244,8 +249,8 @@ describe ApplicationController do
       end
 
       it 'does not let a user journal wines from another user' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
-        user2 = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user2 = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
 
         visit '/login'
 
@@ -274,7 +279,7 @@ describe ApplicationController do
       end
 
       it 'does not let a user create a blank journal entry' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
 
         visit '/login'
 
@@ -311,7 +316,7 @@ describe ApplicationController do
     context 'logged in' do
       it 'displays a single wine entry' do
 
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         wine = Wine.create(:name => "Borsao Garnacha",
                            :winery => "Borsao",
                            :vintage => "2016",
@@ -337,7 +342,7 @@ describe ApplicationController do
 
     context 'logged out' do
       it 'does not let a user view a wine' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         wine = Wine.create(:name => "Borsao Garnacha",
                            :winery => "Borsao",
                            :vintage => "2016",
@@ -356,7 +361,7 @@ describe ApplicationController do
   describe 'edit action' do
     context "logged in" do
       it 'lets a user view wine edit form if they are logged in' do
-        user = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         wine = Wine.create(:name => "Borsao Garnacha",
                            :winery => "Borsao",
                            :vintage => "2016",
@@ -377,7 +382,7 @@ describe ApplicationController do
       end
 
       it 'does not let a user edit a wine they did not create' do
-        user1 = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user1 = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         wine1 = Wine.create(:name => "Borsao Garnacha",
                             :winery => "Borsao",
                             :vintage => "2016",
@@ -388,7 +393,7 @@ describe ApplicationController do
                             :other_notes => "Would pair well with dark chocolate",
                             :user_id => user1.id)
 
-        user2 = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user2 = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine2 = Wine.create(:name => "Charles & Charles Cabernet Blend",
                             :winery => "Charles & Charles",
                             :vintage => "2015",
@@ -409,7 +414,7 @@ describe ApplicationController do
       end
 
       it 'lets a user edit their own wine if they are logged in' do
-        user = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine = Wine.create(:name => "Charles & Charles Cabernet Blend",
                            :winery => "Charles & Charles",
                            :vintage => "2015",
@@ -435,7 +440,7 @@ describe ApplicationController do
       end
 
       it 'does not let a user edit a text field with blank content' do
-        user = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine = Wine.create(:name => "Charles & Charles Cabernet Blend",
                            :winery => "Charles & Charles",
                            :vintage => "2015",
@@ -471,7 +476,7 @@ describe ApplicationController do
   describe 'delete action' do
     context "logged in" do
       it 'lets a user delete their own wine if they are logged in' do
-        user = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine = Wine.create(:name => "Charles & Charles Cabernet Blend",
                            :winery => "Charles & Charles",
                            :vintage => "2015",
@@ -493,7 +498,7 @@ describe ApplicationController do
       end
 
       it 'does not let a user delete a wine they did not create' do
-        user1 = User.create(:username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
+        user1 = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         wine1 = Wine.create(:name => "Borsao Garnacha",
                             :winery => "Borsao",
                             :vintage => "2016",
@@ -504,7 +509,7 @@ describe ApplicationController do
                             :other_notes => "Would pair well with dark chocolate",
                             :user_id => user1.id)
 
-        user2 = User.create(:username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
+        user2 = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
         wine2 = Wine.create(:name => "Charles & Charles Cabernet Blend",
                             :winery => "Charles & Charles",
                             :vintage => "2015",
