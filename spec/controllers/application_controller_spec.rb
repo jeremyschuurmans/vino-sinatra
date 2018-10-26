@@ -337,9 +337,9 @@ describe ApplicationController do
 
         visit "/wines/#{wine.id}"
         expect(page.status_code).to eq(200)
-        expect(page.body).to include("Delete Wine")
+        expect(page.body).to include("DELETE WINE")
         expect(page.body).to include(wine.tasting_notes)
-        expect(page.body).to include("Edit Wine")
+        expect(page.body).to include("EDIT WINE")
       end
     end
 
@@ -495,7 +495,7 @@ describe ApplicationController do
         fill_in(:password, :with => "scabbers789")
         click_button 'submit'
         visit 'wines/1'
-        click_button "Delete Wine"
+        click_button "DELETE WINE"
         expect(page.status_code).to eq(200)
         expect(Wine.find_by(:origin => "Columbia Valley, Washington")).to eq(nil)
       end
@@ -529,10 +529,10 @@ describe ApplicationController do
         fill_in(:password, :with => "quidditch")
         click_button 'submit'
         visit "wines/#{wine2.id}"
-        click_button "Delete Tweet"
+        click_button "DELETE WINE"
         expect(page.status_code).to eq(200)
         expect(Wine.find_by(:origin => "Columbia Valley, Washington")).to be_instance_of(Wine)
-        expect(page.current_path).to include('/tweets')
+        expect(page.current_path).to include('/wines')
       end
     end
 
