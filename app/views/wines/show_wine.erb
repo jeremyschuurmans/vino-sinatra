@@ -10,3 +10,10 @@
     <%= @wine.other_notes %><br>
   </li>
 </ol>
+
+<form method="POST" action="/wines/<%=@wine.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="DELETE WINE">
+</form>
+  <br></br>
+<a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
