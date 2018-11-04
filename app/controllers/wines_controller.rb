@@ -36,7 +36,7 @@ class WinesController < ApplicationController
   get '/wines/:id' do
     if logged_in
       @wine = Wine.find_by(id: params[:id])
-      erb :'/wines/show_wine'
+      erb :'wines/show_wine'
     else
       redirect '/login'
     end
@@ -46,9 +46,10 @@ class WinesController < ApplicationController
     if logged_in
       @user = current_user
       @wine = Wine.find_by(id: params[:id])
-        if @wine.user_id == current_user.id
-          erb :'wines/edit'
-       else
+      if @wine.user_id == current_user.id
+        erb :'wines/edit'
+      end
+    else
       redirect '/login'
     end
   end
@@ -56,19 +57,16 @@ class WinesController < ApplicationController
   patch '/wines/:id' do
     if logged_in
       @wine = Wine.find_by(id: params[:id])
-        if !params[:name].empty? && !params[:winery].empty? && !params[:vintage].empty? && !params[:origin].empty? && !params[:price].empty? && !params[:rating].empty? && !params[:tasting_notes].empty? && @wine.user_id == current_user.id
-            @wine.update(name: params[:name], winery: params[:winery], vintage: params[:vintage], origin: params[:origin], price: params[:price], rating: params[:rating], tasting_notes: params[:tasting_notes], other_notes: params[:other_notes])
-            redirect "/wines/#{@wine.id}"
-        else
-          redirect "/wines/#{@wine.id}/edit"
-        end
+      if !params[:name].empty? && !params[:winery].empty? && !params[:vintage].empty? && !params[:origin].empty? && !params[:price].empty? && !params[:rating].empty? && !params[:tasting_notes].empty? && @wine.user_id == current_user.id
+        @wine.update(name: params[:name], winery: params[:winery], vintage: params[:vintage], origin: params[:origin], price: params[:price], rating: params[:rating], tasting_notes: params[:tasting_notes], other_notes: params[:other_notes])
+        redirect "/wines/#{@wine.id}"
       else
-        redirect '/login'
+        redirect "/wines/#{@wine.id}/edit"
       end
+    else
+      redirect '/login'
     end
   end
-
-
 
   delete '/wines/:id/delete' do
     if logged_in

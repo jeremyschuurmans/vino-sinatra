@@ -1,7 +1,10 @@
+Welcome, <%= "#{current_user.name}" %>
+
 <ol>
 <% @wines.each do |wine| %>
 <li>
   <a href='wines/<%=wine.id%>'><%= wine.name %></a><br>
+  <%= wine.origin %><br>
   <%= wine.winery %><br>
   <%= wine.vintage %><br>
   <%= wine.tasting_notes %><br>
@@ -12,6 +15,6 @@
 
 <a href='/wines/new'>CREATE A NEW WINE</a>
 <br></br>
-<a href='/users/<%=@user.slug%>'>VIEW YOUR WINES</a>
+<a href='/users/<%=current_user.slug%>'>VIEW YOUR WINES</a>
 <br></br>
 <a href='/logout'>LOGOUT</a>
