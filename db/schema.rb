@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026194636) do
+ActiveRecord::Schema.define(version: 20181104185212) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20181026194636) do
     t.string  "winery"
     t.string  "vintage"
     t.string  "origin"
-    t.float   "price"
+    t.string  "price"
     t.integer "rating"
     t.text    "tasting_notes"
     t.text    "other_notes"
