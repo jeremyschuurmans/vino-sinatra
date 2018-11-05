@@ -22,13 +22,13 @@
    <div class="column">
      <div class="card">
        <h3><%= @wine.name %></h3><br>
-         <p>Origin: <%= @wine.origin %><br>
-            Winery: <%= @wine.winery %><br>
-            Vintage: <%= @wine.vintage %><br>
-            Price: <%= @wine.price %><br>
-            Rating: <%= @wine.rating %><br>
-            Tasting Notes: <%= @wine.tasting_notes %><br>
-            Other Thoughts: <%= @wine.other_notes %><br>
+         <p><strong>Origin: </strong><%= @wine.origin %><br>
+            <strong>Winery: </strong><%= @wine.winery %><br>
+            <strong>Vintage: </strong><%= @wine.vintage %><br>
+            <strong>Price: </strong><%= @wine.price %><br>
+            <strong>Rating: </strong><%= @wine.rating %><br>
+            <strong>Tasting Notes: </strong><%= @wine.tasting_notes %><br>
+            <strong>Other Thoughts: </strong><%= @wine.other_notes %><br>
           </p>
           <br>
           <% if @wine.user_id == current_user.id %>

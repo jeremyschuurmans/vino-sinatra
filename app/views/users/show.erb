@@ -1,21 +1,3 @@
-<% @user.wines.each do |wine| %>
-  <%= wine.name %><br>
-  <%= wine.winery %><br>
-  <%= wine.vintage %><br>
-  <%= wine.origin %><br>
-  <%= wine.price %><br>
-  <%= wine.rating %><br>
-  <%= wine.tasting_notes %><br>
-  <%= wine.other_notes %>
-  <br></br>
-  <a href="/wines/delete">DELETE WINE</a>
-  <br></br>
-  <a href="/wines/<%=wine.id%>/edit">EDIT WINE</a>
-  <br></br>
-<% end %>
-
-<a href="/wines">BACK TO MAIN WINE LIST</a>
-
 <nav class="navbar-wines navbar-default">
   <div class="container">
     <div class="navbar-header">
@@ -39,24 +21,24 @@
  <div class="row">
    <div class="column">
      <div class="card">
-       <h3><%= @wine.name %></h3><br>
-         <p>Origin: <%= @wine.origin %><br>
-            Winery: <%= @wine.winery %><br>
-            Vintage: <%= @wine.vintage %><br>
-            Price: <%= @wine.price %><br>
-            Rating: <%= @wine.rating %><br>
-            Tasting Notes: <%= @wine.tasting_notes %><br>
-            Other Thoughts: <%= @wine.other_notes %><br>
-          </p>
-          <br>
-          <% if @wine.user_id == current_user.id %>
-          <a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
-          <br></br>
-          <form method="POST" action="/wines/<%=@wine.id%>/delete">
-            <input id="hidden" type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="DELETE WINE"><br></br>
-          </form>
-          <% end %>
+       <% @user.wines.each do |wine| %>
+         <h3><%= wine.name %></h3><br>
+         <p><strong>Winery: </strong><%= wine.winery %><br>
+            <strong>Vintage: </strong><%= wine.vintage %><br>
+            <strong>Origin: </strong><%= wine.origin %><br>
+            <strong>Price: </strong><%= wine.price %><br>
+            <strong>Rating: </strong><%= wine.rating %><br>
+            <strong>Tasting Notes: </strong><%= wine.tasting_notes %><br>
+            <strong>Other Thoughts: </strong><%= wine.other_notes %>
+         </p>
+         <br>
+         <a href="/wines/<%=wine.id%>/edit">EDIT WINE</a>
+         <br></br>
+         <form method="POST" action="/wines/<%=wine.id%>/delete">
+           <input id="hidden" type="hidden" name="_method" value="DELETE">
+           <input type="submit" value="DELETE WINE"><br></br>
+         </form>
+       <% end %>
        </div>
     </div>
  </div>
