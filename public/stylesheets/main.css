@@ -1,0 +1,43 @@
+body {
+  font-family: 'Krub', sans-serif;
+  line-height: 1.8;
+  color: #f5f6f7;
+}
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.bg-1 {
+  background-color: #722F37; /* Wine Red */
+  color: #ffffff;
+}
+.bg-2 {
+  background-color: #778899; /* Light Slate Grey */
+  color: #ffffff;
+}
+.bg-3 {
+  background-color: #ffffff; /* White */
+  color: #555555;
+}
+.bg-4 {
+  background-color: #2f2f2f;
+  color: #ffffff;
+}
+.glyphicon-heart {
+  color: red;
+  font-size: 14px;
+}
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
+}
