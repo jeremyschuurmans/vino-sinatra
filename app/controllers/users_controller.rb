@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/wines'
     else
-      redirect '/login'
+      redirect '/'
     end
   end
 
