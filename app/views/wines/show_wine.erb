@@ -1,35 +1,46 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ol>
-  <li>
-    Name: <%= @wine.name %><br>
-    Winery: <%= @wine.winery %><br>
-    Vintage: <%= @wine.vintage %><br>
-    Origin: <%= @wine.origin %><br>
-    Price: <%= @wine.price %><br>
-    Rating: <%= @wine.rating %><br>
-    Tasting Notes: <%= @wine.tasting_notes %><br>
-    Other Thoughts: <%= @wine.other_notes %><br>
-  </li>
-</ol>
-
-<form method="POST" action="/wines/<%=@wine.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="DELETE WINE">
-</form>
-  <br></br>
-<a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
-  <br></br>
-<a href="/wines">BACK TO MAIN WINE LIST</a>
+<nav class="navbar-wines navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/wines">VINO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='/wines/new'>NEW ENTRY</a></li>
+        <li><a href='/users/<%=current_user.slug%>'>VIEW YOUR WINES</a></li>
+        <li><a href='/logout'>LOG OUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+ <div class="row">
+   <% @wines.each do |wine| %>
+     <div class="column">
+       <div class="card">
+         <h3>Name: <%= @wine.name %></h3><br>
+         <p>Origin: <%= @wine.origin %><br>
+            Winery: <%= @wine.winery %><br>
+            Vintage: <%= @wine.vintage %><br>
+            Price: <%= @wine.price %><br>
+            Rating: <%= @wine.rating %><br>
+            Tasting Notes: <%= @wine.tasting_notes %><br>
+            Other Thoughts: <%= @wine.other_notes %><br>
+          </p>
+          <form method="POST" action="/wines/<%=@wine.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="DELETE WINE">
+          </form>
+            <br></br>
+          <a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
+       </div>
+     </div>
+   <% end %>
+ </div>
+</div>
+<div class="container-fluid"></div>
+<div class="container-fluid"></div>
