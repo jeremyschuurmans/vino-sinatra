@@ -19,10 +19,9 @@
 </nav>
 <div class="container-fluid">
  <div class="row">
-   <% @wines.each do |wine| %>
-     <div class="column">
-       <div class="card">
-         <h3>Name: <%= @wine.name %></h3><br>
+   <div class="column">
+     <div class="card">
+       <h3><%= @wine.name %></h3><br>
          <p>Origin: <%= @wine.origin %><br>
             Winery: <%= @wine.winery %><br>
             Vintage: <%= @wine.vintage %><br>
@@ -31,15 +30,17 @@
             Tasting Notes: <%= @wine.tasting_notes %><br>
             Other Thoughts: <%= @wine.other_notes %><br>
           </p>
+          <br>
+          <% if @wine.user_id == current_user.id %>
+          <a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
+          <br></br>
           <form method="POST" action="/wines/<%=@wine.id%>/delete">
             <input id="hidden" type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="DELETE WINE">
+            <input type="submit" value="DELETE WINE"><br></br>
           </form>
-            <br></br>
-          <a href="/wines/<%=@wine.id%>/edit">EDIT WINE</a>
+          <% end %>
        </div>
-     </div>
-   <% end %>
+    </div>
  </div>
 </div>
 <div class="container-fluid"></div>
