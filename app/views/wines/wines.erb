@@ -1,20 +1,35 @@
-Welcome, <%= "#{current_user.name}" %>
-
-<ol>
-<% @wines.each do |wine| %>
-<li>
-  <a href='wines/<%=wine.id%>'><%= wine.name %></a><br>
-  <%= wine.origin %><br>
-  <%= wine.winery %><br>
-  <%= wine.vintage %><br>
-  <%= wine.tasting_notes %><br>
-</li>
-<% end %>
-
-</ol>
-
-<a href='/wines/new'>CREATE A NEW WINE</a>
-<br></br>
-<a href='/users/<%=current_user.slug%>'>VIEW YOUR WINES</a>
-<br></br>
-<a href='/logout'>LOGOUT</a>
+<nav class="navbar-wines navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/index">VINO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='/wines/new'>NEW ENTRY</a></li>
+        <li><a href='/users/<%=current_user.slug%>'>VIEW YOUR WINES</a></li>
+        <li><a href='/logout'>LOG OUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+ <div class="row">
+   <% @wines.each do |wine| %>
+     <div class="column">
+       <div class="card">
+         <h3><a href='wines/<%=wine.id%>'><%= wine.name %></a></h3>
+         <p><strong>Origin: </strong><%= wine.origin %><br>
+           <strong>Winery: </strong><%= wine.winery %><br>
+           <strong>Vintage: </strong><%= wine.vintage %><br>
+           <strong>Tasting Notes: </strong><%= wine.tasting_notes %></p>
+       </div>
+     </div>
+   <% end %>
+ </div>
+</div>
+<div class="container-fluid"></div>

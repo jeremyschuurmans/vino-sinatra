@@ -11,11 +11,11 @@ p {font-size: 16px;}
 }
 .bg-2 {
   background-color: #e5e6d8;
-  color: #ffffff;
+  color: #1a1a1a;
 }
 .bg-3 {
   background-color: #6f8a79;
-  color: #555555;
+  color: #1a1a1a;
 }
 .bg-4 {
   background-color: #422833;
@@ -59,5 +59,36 @@ p {font-size: 16px;}
 }
 .modal-body button:hover {
   background: #e5e6d8;
-  color: #422833
+  color: #422833;
+}
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 0 10px;
+}
+.row {margin: 0 -5px;}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  color: #1a1a1a;
+}
+.navbar-wines {
+  background-color: #f1f1f1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0px;
+  border-radius: 0;
+  margin-bottom: 0px;
+  font-size: 12px;
+  letter-spacing: 5px;
 }
