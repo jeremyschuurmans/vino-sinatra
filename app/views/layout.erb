@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<div id="container">
 <html lang="en">
+<div id="header">
 <head>
   <title>VINO</title>
   <meta charset="utf-8">
@@ -10,14 +12,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+</div>
+<div id="body">
 <body>
 
 
   <%= yield %>
 
-
+<div id="footer">
   <footer class="container-fluid bg-4 text-center">
     <p>MADE WITH <span class="glyphicon glyphicon-heart"></span> BY <strong>JEREMY SCHUURMANS</strong></p>
   </footer>
+  </div>
 </body>
+</div>
+</div>
 </html>
