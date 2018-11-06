@@ -47,9 +47,13 @@ p {font-size: 16px;}
   text-align: center;
   font-size: 30px;
 }
+.close:hover {
+  color: #1abc9c;
+}
 .modal-header, .modal-body {
   padding: 40px 50px;
 }
+
 .form-group {
   color: #000;
 }

@@ -10,9 +10,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WINES</a></li>
-        <li><a href="#">MY WINES</a></li>
-        <li><a href="#">LOG OUT</a></li>
+        <li><a href="#what_is_vino">WHO?</a></li>
+        <li><a href="#what_can_i_do_with_it">WHAT?</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal">LOG ME IN</a></li>
       </ul>
     </div>
   </div>
@@ -24,17 +24,19 @@
   <h3>The Social Wine Journal</h3>
 </div>
 
+<a id="what_is_vino"?></a>
 <div class="container-fluid bg-2 text-center">
-  <h3 class="margin">What is This?</h3>
+  <h3 class="margin">What is Vino?</h3>
   <p>Lorem ipsum dolor amet adipisicing plaid fanny pack anim mlkshk, pabst cray post-ironic bicycle rights tumeric pariatur dreamcatcher. Twee aesthetic bitters, roof party poutine wolf enim ugh blog polaroid tofu venmo. Pug ut retro, blog commodo drinking vinegar authentic. Hot chicken eu tofu VHS ut.</p>
   <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-log-in"></span> LOG IN</button>
 </div>
 
+<a id="what_can_i_do_with_it"></a>
 <div class="container-fluid bg-3 text-center">
-  <h3 class="margin">Quinoa dolore nostrud</h3>
+  <h3 class="margin">What can I do with Vino?</h3>
   <div class="row">
-    <div class="col-sm-4">
+     <div class="col-sm-4">
       <p>Quinoa dolore nostrud yuccie, dreamcatcher ugh live-edge mixtape. Vice squid asymmetrical ullamco, selvage wayfarers pop-up lyft offal blue bottle. Officia vaporware keytar live-edge chicharrones magna. Chambray tempor kickstarter ipsum tofu magna sartorial.</p>
       <img src="https://picsum.photos/200" class="image-responsive" style="width:100%" alt="Random Image">
     </div>
@@ -76,3 +78,41 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="signUpModal" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type-"button" class="close" data-dismiss="modal">&times;</button>
+          <h4>Sign Up</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/signup" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="What's your name?">
+            </div>
+            <div class="form-group">
+              <input type="text" name="username" class="form-control" placeholder="Pick a unique username">
+            </div>
+            <button type="submit" class="btn btn-block">Submit</button>
+           </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+              <p><a href='/signup'>OR SIGN UP</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <fieldset>
+      <legend>SIGN UP FOR VINO</legend>
+      <form method="POST" action="/signup">
+        <label>What is your name?<input type="text" name="name"></label><br>
+        <label>Pick a username:<input type="text" name="username"></label><br>
+        <label>What is your email?<input type="text" name="email"></label><br>
+        <label>Create a password:<input type="text" name="password"></label><br>
+        <input type="submit" id="submit">
+      </form>
+    </fieldset>
