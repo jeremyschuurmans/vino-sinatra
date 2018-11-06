@@ -1,7 +1,29 @@
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: 'Krub', sans-serif;
   line-height: 1.8;
   color: #f5f6f7;
+}
+#container {
+  min-height: 100%;
+  position: relative;
+}
+#header {
+  background: #ff0;
+  padding: 0px;
+}
+#body {
+  padding: 0px;
+  padding-bottom: 180px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 170px;
+  background: #422833;
 }
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}

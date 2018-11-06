@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/wines">VINO</a>
+      <a class="navbar-brand" href="/wines"><%=current_user.name%>'s VINO</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -20,9 +20,8 @@
 <div class="container-fluid">
  <div class="row">
    <div class="column">
-     <div class="card">
-       
-       <% @user.wines.each do |wine| %>
+     <% @user.wines.each do |wine| %>
+      <div class="card">
          <h3><%= wine.name %></h3><br>
          <p><strong>Winery: </strong><%= wine.winery %><br>
             <strong>Vintage: </strong><%= wine.vintage %><br>
