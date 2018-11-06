@@ -32,12 +32,17 @@
             <strong>Other Thoughts: </strong><%= wine.other_notes %>
          </p>
          <br>
+
          <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
            <span class="glyphicon glyphicon-pencil"></span> EDIT WINE</button>
+
          <br></br>
          <form method="POST" action="/wines/<%=wine.id%>/delete">
            <input id="hidden" type="hidden" name="_method" value="DELETE">
-           <input type="submit" value="DELETE WINE"><br></br>
+           <button type="submit" class="btn btn-default btn-lg">
+             <span class="glyphicon glyphicon-remove"></span> DELETE WINE</button>
+          <br></br>
+
          </form>
          <div class="modal fade" id="myModal" role="dialog">
            <div class="modal-dialog">
@@ -49,41 +54,33 @@
                </div>
                <div class="modal-body">
                  <form method="POST" action="/wines/<%=wine.id%>">
-                   <input id="hidden" type="hidden" method="_method" value="PATCH">
+                   <input id="hidden" type="hidden" name="_method" value="PATCH">
                    <div class="form-group">
-                     <label for="name"></label>
-                     <input type="text" class="form-control" id="name" value="<%= wine.name %>">
+                     <input id="textbox" type="text" class="form_control" name="name" value="<%= wine.name %>">
                    </div>
                    <div class="form-group">
-                     <label for="winery"></label>
-                     <input type="text" class="form-control" id="winery" value="<%= wine.winery %>">
+                     <input id="textbox" type="text" class="form_control" name="winery" value="<%= wine.winery %>">
                    </div>
                    <div class="form-group">
-                     <label for="vintage"></label>
-                     <input type="text" class="form-control" id="vintage" value="<%= wine.vintage %>">
+                     <input id="textbox" type="text" class="form_control" name="vintage" value="<%= wine.vintage %>">
                    </div>
                    <div class="form-group">
-                     <label for="origin"></label>
-                     <input type="text" class="form-control" id="origin" value="<%= wine.origin %>">
+                     <input id="textbox" type="text" class="form_control" name="origin" value="<%= wine.origin %>">
                    </div>
                    <div class="form-group">
-                     <label for="price"></label>
-                     <input type="text" class="form-control" id="price" value="<%= wine.price %>">
+                     <input id="textbox" type="text" class="form_control" name="price" value="<%= wine.price %>">
                    </div>
                    <div class="form-group">
-                     <label for="rating"></label>
-                     <input type="text" class="form-control" id="rating" value="<%= wine.rating %>">
+                     <input id="textbox" type="text" class="form_control" name="rating" value="<%= wine.rating %>">
                    </div>
                    <div class="form-group">
-                     <label for="tasting_notes"></label>
-                     <input type="text" class="form-control" id="tasting_notes" value="<%= wine.tasting_notes %>">
+                     <textarea class="form_control" name="tasting_notes"><%= wine.tasting_notes %></textarea>
                    </div>
                    <div class="form-group">
-                     <label for="other_notes"></label>
-                     <input type="text" class="form-control" id="other_notes" value="<%= wine.other_notes %>">
+                     <textarea class="form_control" name="other_notes"><%= wine.other_notes %></textarea>
                    </div>
                    <button type="submit" class="btn btn-block">Submit</button>
-                   <input type="reset" class="btn btn-block">
+                   <button type="reset" class="btn btn-block">Reset</button>
                   </form>
                  </div>
                  <div class="modal-footer">
@@ -93,7 +90,7 @@
                </div>
              </div>
            </div>
-       <% end %>
+         <% end %>
        </div>
     </div>
  </div>
