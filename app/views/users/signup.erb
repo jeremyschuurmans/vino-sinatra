@@ -1,10 +1,42 @@
-<fieldset>
-  <legend>SIGN UP FOR VINO</legend>
-  <form method="POST" action="/signup">
-    <label>What is your name?<input type="text" name="name"></label><br>
-    <label>Pick a username:<input type="text" name="username"></label><br>
-    <label>What is your email?<input type="text" name="email"></label><br>
-    <label>Create a password:<input type="text" name="password"></label><br>
-    <input type="submit" id="submit">
-  </form>
-</fieldset>
+<nav class="navbar-wines navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">VINO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a>WELCOME</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid bg-1">
+</div>
+<div class="container-fluid bg-2">
+  <div class="container">
+    <div class="form-card center">
+    <form method="POST" action="/signup">
+      <div class="form-group">
+        <label>Name: </label><input type="text" name="name" class="form-control" placeholder="Sam Clemens">
+      </div>
+      <div class="form-group">
+        <label>Username: </label><input type="text" name="username" class="form-control" placeholder="s_clemens">
+      </div>
+      <div class="form-group">
+        <label>Email: </label><input type="text" name="email" class="form-control" placeholder="sam@bmail.com">
+      </div>
+      <div class="form-group">
+        <label>Password: </label><input type="password" name="password" class="form-control" placeholder="secure password">
+      </div>
+      <button type="submit" class="btn btn-block">Submit</button>
+    </form>
+    </div>
+  </div>
+  </div>
+  <div class="container-fluid bg-3">
+  </div>
