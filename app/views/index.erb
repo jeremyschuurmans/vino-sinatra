@@ -73,7 +73,7 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
             <span class="glyphicon glyphicon-remove"></span> Cancel</button>
-            <p><a href='/signup'>OR SIGN UP</a></p>
+            <p><a href="#" data-toggle="modal" data-target="#signUpModal">OR SIGN UP</a></p>
         </div>
       </div>
     </div>
@@ -94,6 +94,12 @@
             <div class="form-group">
               <input type="text" name="username" class="form-control" placeholder="Pick a unique username">
             </div>
+            <div class="form-group">
+              <input type="text" name="email" class="form-control" placeholder="What's your email address?">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Think of a secure password">
+            </div>
             <button type="submit" class="btn btn-block">Submit</button>
            </form>
           </div>
@@ -105,14 +111,3 @@
         </div>
       </div>
     </div>
-
-    <fieldset>
-      <legend>SIGN UP FOR VINO</legend>
-      <form method="POST" action="/signup">
-        <label>What is your name?<input type="text" name="name"></label><br>
-        <label>Pick a username:<input type="text" name="username"></label><br>
-        <label>What is your email?<input type="text" name="email"></label><br>
-        <label>Create a password:<input type="text" name="password"></label><br>
-        <input type="submit" id="submit">
-      </form>
-    </fieldset>

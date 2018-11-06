@@ -21,6 +21,7 @@
  <div class="row">
    <div class="column">
      <div class="card">
+       
        <% @user.wines.each do |wine| %>
          <h3><%= wine.name %></h3><br>
          <p><strong>Winery: </strong><%= wine.winery %><br>
