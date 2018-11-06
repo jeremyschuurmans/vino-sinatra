@@ -1,14 +1,59 @@
-<fieldset>
-  <legend>JOURNAL</legend>
-  <form method="POST" action="/wines">
-    <label>Name:<input type="text" name="name"></label><br>
-    <label>Winery:<input type="text" name="winery"></label><br>
-    <label>Vintage:<input type="text" name="vintage"></label><br>
-    <label>Origin:<input type="text" name="origin"></label><br>
-    <label>Price:<input type="text" name="price"></label><br>
-    <label>Rating:<input type="text" name="rating"></label><br>
-    <label>Tasting Notes:<input type="text" name="tasting_notes"></label><br>
-    <label>Other Notes:<input type="text" name="other_notes"></label><br>
-    <input type="submit" id="submit">
-  </form>
-</fieldset>
+<nav class="navbar-wines navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/wines"><%=current_user.name%>'s VINO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='/wines/new'>NEW ENTRY</a></li>
+        <li><a href='/users/<%=current_user.slug%>'>VIEW YOUR WINES</a></li>
+        <li><a href='/logout'>LOG OUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid bg-1">
+</div>
+<div class="container-fluid bg-2">
+  <div class="container">
+    <div class="form-card center">
+      <!-- <div class="new-form"> -->
+    <form method="POST" action="/wines">
+      <div class="form-group">
+        <label>Name:<input id="textbox" type="text" name="name" class="form-control" placeholder="Samuel Clemens Pinot Noir"></label><br>
+      </div>
+      <div class="form-group">
+        <label>Winery:<input id="textbox" type="text" name="winery" class="form-control" placeholder="Clemens Estates"></label><br>
+      </div>
+      <div class="form-group">
+        <label>Vintage:<input id="textbox" type="text" name="vintage" class="form-control" placeholder="2012"></label><br>
+      </div>
+      <div class="form-group">
+        <label>Origin:<input id="textbox" type="text" name="origin" class="form-control" placeholder="Willamette Valley, Oregon"></label><br>
+      </div>
+      <div class="form-group">
+        <label>Price:<input id="textbox" type="text" name="price" class="form-control"></label><br>
+      </div>
+      <div class="form-group">
+        <label>Rating:<input id="textbox" type="text" name="rating" class="form-control"></label><br>
+      </div>
+      <div class="form-group">
+        <label>Tasting Notes:<textarea name="tasting_notes" class="form-control"></textarea></label><br>
+      </div>
+      <div class="form-group">
+        <label>Other Thoughts:<textarea name="other_notes" class="form-control"></textarea></label><br>
+      </div>
+      <button type="submit" class="btn btn-block">Submit</button>
+      <button type="reset" class="btn btn-block">Reset</button>
+    </form>
+    </div>
+  <!-- </div> -->
+  </div>
+  </div>
+  <div class="container-fluid bg-3">
+    </div>

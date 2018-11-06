@@ -6,19 +6,19 @@ html, body {
   line-height: 1.8;
   color: #f5f6f7;
 }
-#container {
+.container {
   min-height: 100%;
   position: relative;
 }
-#header {
+.header {
   background: #ff0;
   padding: 0px;
 }
-#body {
+.body {
   padding: 0px;
   padding-bottom: 180px;
 }
-#footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -78,6 +78,7 @@ p {font-size: 16px;}
 
 .form-group {
   color: #000;
+  /* background-color: #1f1f1f; */
 }
 .modal-body button{
   background: #422833;
@@ -124,3 +125,23 @@ textarea {
   font-size: 12px;
   letter-spacing: 5px;
 }
+.form-card {
+  /* padding: 75px; */
+  /* text-align: center; */
+  background-color: #f1f1f1;
+  color: #1a1a1a;
+  /* width: 100%; */
+  /* position: center; */
+}
+.form-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 75px;
+}
+/* .new-form {
+  width: 100%;
+  background-color: #f6f6f6;
+} */
