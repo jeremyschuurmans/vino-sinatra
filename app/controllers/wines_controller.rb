@@ -42,17 +42,17 @@ class WinesController < ApplicationController
     end
   end
 
-  get '/wines/:id/edit' do
-    if logged_in
-      @user = current_user
-      @wine = Wine.find_by(id: params[:id])
-      if @wine.user_id == current_user.id
-        erb :'wines/edit'
-      end
-    else
-      redirect '/login'
-    end
-  end
+  # get '/wines/:id/edit' do
+  #   if logged_in
+  #     @user = current_user
+  #     @wine = Wine.find_by(id: params[:id])
+  #     if @wine.user_id == current_user.id
+  #       erb :'wines/edit'
+  #     end
+  #   else
+  #     redirect '/login'
+  #   end
+  # end
 
   patch '/wines/:id' do
     if logged_in
