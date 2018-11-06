@@ -71,8 +71,8 @@ class WinesController < ApplicationController
   delete '/wines/:id/delete' do
     if logged_in
       @user = current_user
-      @wine = Wine.find_by(params[:user_id])
-      if @wine.user_id == current_user.id
+      @wine = Wine.find { |wine| wine.user_id == @user.id }
+      if @wine.user_id == @user.id
         @wine.delete
         redirect '/wines'
       else
