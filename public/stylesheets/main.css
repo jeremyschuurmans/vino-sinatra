@@ -116,7 +116,7 @@ textarea {
   background-color: #f1f1f1;
   color: #1a1a1a;
   margin: 10px;
-  width: fixed;
+  max-width: 480px;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -124,8 +124,8 @@ textarea {
 .card-container {
   display: grid;
   padding: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: 1 rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
 }
 .navbar-wines {
   background-color: #f1f1f1;
