@@ -17,20 +17,16 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid">
- <div class="row">
-   <% @wines.each do |wine| %>
-     <div class="column">
-       <div class="card">
+<section class="card-container">
+  <% @wines.each do |wine| %>
+ <article class="card">
+    <main class="card_content">
          <h3><a href='wines/<%=wine.id%>'><%= wine.name %></a></h3>
          <p><strong>Origin: </strong><%= wine.origin %><br>
            <strong>Winery: </strong><%= wine.winery %><br>
            <strong>Vintage: </strong><%= wine.vintage %><br>
            <strong>Tasting Notes: </strong><%= wine.tasting_notes %></p>
-       </div>
-     </div>
-   <% end %>
- </div>
-</div>
-<div class="container-fluid"></div>
-<div class="container-fluid"></div>
+   </main>
+ </article>
+ <% end %>
+</section>

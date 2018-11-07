@@ -17,23 +17,21 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid">
- <div class="row">
-   <div class="column">
-     <% @user.wines.each do |wine| %>
-      <div class="card">
-         <h3><%= wine.name %></h3><br>
-         <p><strong>Winery: </strong><%= wine.winery %><br>
-            <strong>Vintage: </strong><%= wine.vintage %><br>
-            <strong>Origin: </strong><%= wine.origin %><br>
-            <strong>Price: </strong><%= wine.price %><br>
-            <strong>Rating: </strong><%= wine.rating %><br>
-            <strong>Tasting Notes: </strong><%= wine.tasting_notes %><br>
-            <strong>Other Thoughts: </strong><%= wine.other_notes %>
-         </p>
-         <br>
-
-         <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+<section class="card-container">
+  <% @user.wines.each do |wine| %>
+ <article class="card">
+    <main class="card_content">
+      <h3><%= wine.name %></h3><br>
+      <p><strong>Winery: </strong><%= wine.winery %><br>
+         <strong>Vintage: </strong><%= wine.vintage %><br>
+         <strong>Origin: </strong><%= wine.origin %><br>
+         <strong>Price: </strong><%= wine.price %><br>
+         <strong>Rating: </strong><%= wine.rating %><br>
+         <strong>Tasting Notes: </strong><%= wine.tasting_notes %><br>
+         <strong>Other Thoughts: </strong><%= wine.other_notes %>
+      </p>
+      <br>
+      <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
            <span class="glyphicon glyphicon-pencil"></span> EDIT WINE</button>
 
          <br></br>
@@ -42,58 +40,53 @@
            <button type="submit" class="btn btn-default btn-lg">
              <span class="glyphicon glyphicon-remove"></span> DELETE WINE</button>
           <br></br>
+        </form>
+       <div class="modal fade" id="myModal" role="dialog">
+         <div class="modal-dialog">
 
-         </form>
-         <div class="modal fade" id="myModal" role="dialog">
-           <div class="modal-dialog">
-
-             <div class="modal-content">
-               <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                 <h4>Edit <%= wine.name %></h4>
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4>Edit <%= wine.name %></h4>
+             </div>
+             <div class="modal-body">
+               <form method="POST" action="/wines/<%=wine.id%>">
+                 <input id="hidden" type="hidden" name="_method" value="PATCH">
+                 <div class="form-group">
+                   <input id="textbox" type="text" class="form_control" name="name" value="<%= wine.name %>">
+                 </div>
+                 <div class="form-group">
+                   <input id="textbox" type="text" class="form_control" name="winery" value="<%= wine.winery %>">
+                 </div>
+                 <div class="form-group">
+                   <input id="textbox" type="text" class="form_control" name="vintage" value="<%= wine.vintage %>">
+                 </div>
+                 <div class="form-group">
+                   <input id="textbox" type="text" class="form_control" name="origin" value="<%= wine.origin %>">
+                 </div>
+                 <div class="form-group">
+                   <input id="textbox" type="text" class="form_control" name="price" value="<%= wine.price %>">
+                 </div>
+                 <div class="form-group">
+                   <input id="textbox" type="text" class="form_control" name="rating" value="<%= wine.rating %>">
+                 </div>
+                 <div class="form-group">
+                   <textarea class="form_control" name="tasting_notes"><%= wine.tasting_notes %></textarea>
+                 </div>
+                 <div class="form-group">
+                   <textarea class="form_control" name="other_notes"><%= wine.other_notes %></textarea>
+                 </div>
+                 <button type="submit" class="btn btn-block">Submit</button>
+                 <button type="reset" class="btn btn-block">Reset</button>
+                </form>
                </div>
-               <div class="modal-body">
-                 <form method="POST" action="/wines/<%=wine.id%>">
-                   <input id="hidden" type="hidden" name="_method" value="PATCH">
-                   <div class="form-group">
-                     <input id="textbox" type="text" class="form_control" name="name" value="<%= wine.name %>">
-                   </div>
-                   <div class="form-group">
-                     <input id="textbox" type="text" class="form_control" name="winery" value="<%= wine.winery %>">
-                   </div>
-                   <div class="form-group">
-                     <input id="textbox" type="text" class="form_control" name="vintage" value="<%= wine.vintage %>">
-                   </div>
-                   <div class="form-group">
-                     <input id="textbox" type="text" class="form_control" name="origin" value="<%= wine.origin %>">
-                   </div>
-                   <div class="form-group">
-                     <input id="textbox" type="text" class="form_control" name="price" value="<%= wine.price %>">
-                   </div>
-                   <div class="form-group">
-                     <input id="textbox" type="text" class="form_control" name="rating" value="<%= wine.rating %>">
-                   </div>
-                   <div class="form-group">
-                     <textarea class="form_control" name="tasting_notes"><%= wine.tasting_notes %></textarea>
-                   </div>
-                   <div class="form-group">
-                     <textarea class="form_control" name="other_notes"><%= wine.other_notes %></textarea>
-                   </div>
-                   <button type="submit" class="btn btn-block">Submit</button>
-                   <button type="reset" class="btn btn-block">Reset</button>
-                  </form>
-                 </div>
-                 <div class="modal-footer">
-                   <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                     <span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                 </div>
+               <div class="modal-footer">
+                 <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                   <span class="glyphicon glyphicon-remove"></span> Cancel</button>
                </div>
              </div>
            </div>
-         <% end %>
-       </div>
-    </div>
- </div>
-</div>
-<div class="container-fluid"></div>
-<div class="container-fluid"></div>
+   </main>
+ </article>
+ <% end %>
+</section>
