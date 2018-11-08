@@ -17,8 +17,9 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid">
-     <div class="card">
+<main class="card-container">
+     <article class="card">
+       <main class="card-content">
        <h3><%= @wine.name %></h3><br>
          <p><strong>Origin: </strong><%= @wine.origin %><br>
             <strong>Winery: </strong><%= @wine.winery %><br>
@@ -87,7 +88,8 @@
              </div>
            </div>
 
-          <% end %>
-       </div>
-
-</div>
+        
+       </main>
+  </article>
+  <% end %>
+</main>
