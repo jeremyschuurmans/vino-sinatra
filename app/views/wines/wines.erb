@@ -1,33 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VINO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: 'Roboto', sans-serif;
+    }
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #8b9dc3;
+      color: white;
+      padding: 15px;
+    }
+    .navbar {
+      background-color: #3b5998;
+      border: 0;
+      border-radius: 0;
+    }
+    .nav.navbar-nav li a {
+      color: white;
+    }
+    .col-sm-2 {
+      background-color: #ffffff;
+    }
+    .col-sm-3 {
+      background-color: #ffffff;
+    }
+    .well {
+      background-color: #ffffff;
+    }
 
-<nav class="navbar-wines navbar-default">
-  <div class="container">
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/wines"><%=current_user.name%>'s VINO</a>
+      <strong><a class="navbar-brand" href="#">vino</a></strong>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href='/wines/new'>NEW ENTRY</a></li>
-        <li><a href='/users/<%=current_user.slug%>'>VIEW YOUR WINES</a></li>
-        <li><a href='/logout'>LOG OUT</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<section class="card-container">
-  <% @wines.each do |wine| %>
- <article class="card">
-    <main class="card_content">
-         <h3><a href='wines/<%=wine.id%>'><%= wine.name %></a></h3>
-         <p><strong>Origin: </strong><%= wine.origin %><br>
-           <strong>Winery: </strong><%= wine.winery %><br>
-           <strong>Vintage: </strong><%= wine.vintage %><br>
-           <strong>Tasting Notes: </strong><%= wine.tasting_notes %></p>
-   </main>
- </article>
- <% end %>
-</section>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="#">My Profile</a></p>
+        <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
+      </div>
+      <div class="well">
+        <p><a href="#">Interests</a></p>
+        <p>
+          <span class="label label-default">News</span>
+          <span class="label label-primary">W3Schools</span>
+          <span class="label label-success">Labels</span>
+          <span class="label label-info">Football</span>
+          <span class="label label-warning">Gaming</span>
+          <span class="label label-danger">Friends</span>
+        </p>
+      </div>
+      <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Ey!</strong></p>
+        People are looking at your profile. Find out who.
+      </div>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-7">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <p contenteditable="true">What's in your brain, <%= current_user.name %>?</p>
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% @wines.each do |wine| %>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="well">
+            <p><a href='wines/<%=wine.id%>'><%= wine.name %></a></p>
+            <p><%= wine.tasting_notes %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-sm-2 well">
+      <div class="thumbnail">
+        <p>Upcoming Events:</p>
+        <img src="https://picsum.photos/400/?random" alt="Avatar">
+        <p><strong>Paris</strong></p>
+        <p>Fri. 27 November 2015</p>
+        <button class="btn btn-primary">Info</button>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>

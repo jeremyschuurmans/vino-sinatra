@@ -4,6 +4,8 @@ class WinesController < ApplicationController
     if logged_in
       @wines = Wine.all
       @user = User.find_by(params[:username])
+      @users = User.all
+
       erb :'wines/wines'
     else
       redirect '/login'
