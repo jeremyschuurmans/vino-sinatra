@@ -34,12 +34,31 @@
   .navbar-form.navbar-right {
     padding-top: 8px;
   }
+  .navbar-form.navbar-right button {
+    background-color: #8b9dc3;
+    border-color: black;
+    font-family: 'Roboto', sans-serif;
+  }
+  .navbar-form.navbar-right button:hover {
+    background-color: #3b5998;
+    color: white;
+  }
   #credits p {
     padding-top: 75px;
     text-align: center;
   }
   .col-sm-12 h1 {
     text-align: center;
+  }
+  .col-sm-12 form button {
+    background-color: #dfe3ee;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+  }
+  .col-sm-12 form button:hover {
+    background-color: #8b9dc3;
+    color: white;
   }
   .glyphicon.glyphicon-heart {
     color: red;
@@ -67,7 +86,7 @@
           <div class="form-group">
             <input type="text" name="password" class="form-control" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-default">Log In</button>
+          <button type="submit" class="btn btn-default"><strong>Log In</strong></button>
         </form>
       </div>
     </div>
@@ -91,7 +110,7 @@
     <div class="form-group">
       <label>Password: </label><input type="password" name="password" class="form-control" placeholder="secure password">
     </div>
-    <button type="submit" class="btn btn-block">Submit</button>
+    <button type="submit" class="btn btn-block"><strong>Submit</strong></button>
   </form>
   </div>
   </div>
