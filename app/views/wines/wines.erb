@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/main.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -28,6 +29,11 @@
     .nav.navbar-nav li a {
       color: white;
     }
+    .navbar-brand {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 30px;
+      color: white;
+    }
     .col-sm-2 {
       background-color: #ffffff;
     }
@@ -37,12 +43,15 @@
     .well {
       background-color: #ffffff;
     }
+    .well img {
+      object-fit: contain;
+    }
 
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -50,7 +59,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <strong><a class="navbar-brand" href="#">vino</a></strong>
+      <strong><div class="navbar-brand">vino</div></strong>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -67,7 +76,7 @@
   <div class="row">
     <div class="col-sm-3 well">
       <div class="well">
-        <p><a href="#">My Profile</a></p>
+        <p><a href="/users/show">My Profile</a></p>
         <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
       </div>
       <div class="well">
@@ -97,9 +106,6 @@
           <div class="panel panel-default text-left">
             <div class="panel-body">
               <p contenteditable="true">What's in your brain, <%= current_user.name %>?</p>
-              <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-              </button>
             </div>
           </div>
         </div>
@@ -110,6 +116,9 @@
           <div class="well">
             <p><a href='wines/<%=wine.id%>'><%= wine.name %></a></p>
             <p><%= wine.tasting_notes %></p>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-thumbs-up"></span> Like
+            </button>
           </div>
         </div>
       </div>
@@ -124,10 +133,26 @@
         <button class="btn btn-primary">Info</button>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <div class="thumbnail">
+        <img src="images/wine_ad_1.png" height="300" width="400" alt="Thierry and Guy wine ad">
+      </div>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <div class="thumbnail">
+        <img src="images/wine_ad_2.png">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <iframe src="https://giphy.com/embed/3d8mZpR1z4NFy6gIBA" width="480" height="416" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/facebook-terminator-zuckerberg-3d8mZpR1z4NFy6gIBA">via GIPHY</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
