@@ -50,9 +50,9 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-    # @user = User.find_by_slug(params[:slug])
+    @user = User.find_by_slug(params[:slug])
     @user = current_user
-    @wine = Wine.find { |wine| wine.user_id == @user.id }
+    # @wine = Wine.find { |wine| wine.user_id == @user.id }
     # binding.pry
 
     erb :'/users/show'
