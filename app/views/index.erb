@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/main.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -16,30 +17,67 @@
     padding-top: 100px;
     width: 35%;
   }
+  .navbar {
+    background-color: #3b5998;
+    border: 0;
+    border-radius: 0;
+    padding: 10px;
+  }
+  .navbar-default p {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 40px;
+    color: white;
+  }
+  .nav.navbar-nav li a {
+    color: white;
+  }
+  .navbar-form.navbar-right {
+    padding-top: 8px;
+  }
+  #credits p {
+    padding-top: 75px;
+    text-align: center;
+  }
+  .col-sm-12 h1 {
+    text-align: center;
+  }
+  .glyphicon.glyphicon-heart {
+    color: red;
+    font-size: 14px;
+  }
+
+
 </style>
 <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
         </button>
-        <strong><a class="navbar-brand" href="#">vino</a></strong>
+
+        <p>vino</p>
+
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-        </ul>
+        <form class="navbar-form navbar-right" action="/login" method="POST">
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="text" name="password" class="form-control" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Log In</button>
+        </form>
       </div>
     </div>
   </nav>
   <div class="container-fluid center">
-  <form method="POST" action="/signup">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Create a New Account</h1>
+        <br></br>
+  <form action="/signup" method="POST">
     <div class="form-group">
       <label>Name: </label><input type="text" name="name" class="form-control" placeholder="Sam Clemens">
     </div>
@@ -55,5 +93,10 @@
     </div>
     <button type="submit" class="btn btn-block">Submit</button>
   </form>
+  </div>
+  </div>
+  <div id="credits">
+    <p>MADE WITH <span class="glyphicon glyphicon-heart"></span> BY <strong>JEREMY SCHUURMANS</strong></p>
+  </div>
   </div>
 </body>
