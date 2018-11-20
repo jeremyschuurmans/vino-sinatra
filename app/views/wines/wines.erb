@@ -29,10 +29,16 @@
     .nav.navbar-nav li a {
       color: white;
     }
-    .navbar-brand {
+    .logo {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 30px;
+      background-color: #3b5998;
       color: white;
+      padding-top: 4px;
+      margin-right: 14px;
+    }
+    .navbar-right:hover {
+      background-color: black;
     }
     .col-sm-2 {
       background-color: #ffffff;
@@ -43,23 +49,28 @@
     .well {
       background-color: #ffffff;
     }
-    .well img {
-      object-fit: contain;
+    .well p {
+      text-align: center;
+    }
+    .glyphicon-heart {
+      color: red;
+      font-size: 14px;
+      padding-top: 10px;
     }
 
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <strong><div class="navbar-brand">vino</div></strong>
+      </button> -->
+      <strong><div class="logo">vino</div></strong>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -79,25 +90,15 @@
         <p><a href="/users/show">My Profile</a></p>
         <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
       </div>
-      <div class="well">
-        <p><a href="#">Interests</a></p>
-        <p>
-          <span class="label label-default">News</span>
-          <span class="label label-primary">W3Schools</span>
-          <span class="label label-success">Labels</span>
-          <span class="label label-info">Football</span>
-          <span class="label label-warning">Gaming</span>
-          <span class="label label-danger">Friends</span>
-        </p>
-      </div>
       <div class="alert alert-success fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <p><strong>Ey!</strong></p>
-        People are looking at your profile. Find out who.
+        <p><strong>Hey, there!</strong></p>
+        This is your feed! View and like all these delicious wines!
       </div>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+      <h4>Learn More!</h4>
+      <p><a href="https://winefolly.com/" target="_blank">Wine Folly</a></p>
+      <p><a href="https://www.winespectator.com/" target="_blank">Wine Spectator</a></p>
+      <p><a href="https://en.wikipedia.org/wiki/Wine" target="_blank">Wikipedia</a></p>
     </div>
     <div class="col-sm-7">
 
@@ -133,14 +134,18 @@
         <button class="btn btn-primary">Info</button>
       </div>
       <div class="well">
+        <p>Sponsored</p>
         <div class="thumbnail">
-        <img src="images/wine_ad_1.png" height="300" width="400" alt="Thierry and Guy wine ad">
+        <a href="#" data-toggle="modal" data-target="#advertModalOne"><img src="images/wine_ad_1.png" alt="Thierry and Guy wine ad"></a>
       </div>
+      <p>Thierry and Guy</p>
       </div>
       <div class="well">
+        <p>Sponsored</p>
         <div class="thumbnail">
-        <img src="images/wine_ad_2.png">
+        <a href="#" data-toggle="modal" data-target="#advertModalTwo"><img src="images/wine_ad_2.png" alt="Scavi and Ray Prosecco"></a>
       </div>
+      <p>London Fashion Week</p>
       </div>
     </div>
   </div>
@@ -157,9 +162,34 @@
     </div>
   </div>
 </div>
-
+<div id="advertModalOne" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="images/wine_ad_1.png" alt="Thierry and Guy wine ad">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="advertModalTwo" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="images/wine_ad_2.png" alt="Scavi and Ray Prosecco">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <div id="credits">
+    <p>MADE WITH <span class="glyphicon glyphicon-heart"></span> BY <strong>JEREMY SCHUURMANS</strong></p>
+  </div>
 </footer>
 
 </body>
