@@ -29,10 +29,19 @@
     .nav.navbar-nav li a {
       color: white;
     }
-    .navbar-brand {
+    .nav.navbar-nav li a:hover {
+      background-color: black;
+    }
+    .logo {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 30px;
+      background-color: #3b5998;
       color: white;
+      padding-top: 4px;
+      margin-right: 14px;
+    }
+    .navbar-right:hover {
+      background-color: black;
     }
     .col-sm-2 {
       background-color: #ffffff;
@@ -40,82 +49,88 @@
     .col-sm-3 {
       background-color: #ffffff;
     }
+    .col-sm-12 button {
+      background-color: #dfe3ee;
+    }
+    .col-sm-12 button:hover {
+      background-color: #8b9dc3;
+      color: white;
+    }
+    .col-sm-12 form {
+      margin: 20px;
+      padding: 20px;
+    }
     .well {
       background-color: #ffffff;
     }
-    .well img {
-      object-fit: contain;
+    .well h4 {
+      padding-bottom: 15px;
     }
 
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <strong><div class="navbar-brand">vino</div></strong>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <strong><div class="logo">vino</div></strong>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/wines/new">New Wine</a></li>
+          <li><a href="/users/<%=current_user.slug%>">My Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="container text-center">
-  <div class="row">
-    <div class="col-sm-3 well">
-      <div class="well">
-        <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-3 well">
+        <div class="well">
+          <h4><%= @user.name %>'s Vino</h4>
+          <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
+        </div>
+        <div class="alert alert-success fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <p><strong>Edit Your Wine!</strong></p>
+          Fill out the form to the right to edit this entry.
+        </div>
+        <h4>Learn More!</h4>
+        <p><a href="https://winefolly.com/" target="_blank">Wine Folly</a></p>
+        <p><a href="https://www.winespectator.com/" target="_blank">Wine Spectator</a></p>
+        <p><a href="https://en.wikipedia.org/wiki/Wine" target="_blank">Wikipedia</a></p>
       </div>
-      <div class="well">
-        <p><a href="#">Interests</a></p>
-        <p>
-          <span class="label label-default">News</span>
-          <span class="label label-primary">W3Schools</span>
-          <span class="label label-success">Labels</span>
-          <span class="label label-info">Football</span>
-          <span class="label label-warning">Gaming</span>
-          <span class="label label-danger">Friends</span>
-        </p>
-      </div>
-      <div class="alert alert-success fade in">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <p><strong>Ey!</strong></p>
-        People are looking at your profile. Find out who.
-      </div>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
     <div class="col-sm-7">
-
       <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
               <p contenteditable="true">What's in your brain, <%= current_user.name %>?</p>
-              <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-              </button>
             </div>
           </div>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="well">
         <form action="/wines/<%=@wine.id%>" method="POST">
           <input type="hidden" name="_method" value="PATCH">
           <h2>Edit <%=@wine.name%></h2>
+          <br></br>
           <div class="form-group">
             <label>Name: </label><input id="textbox" type="text" name="name" class="form-control" value="<%=@wine.name%>">
           </div>
@@ -142,7 +157,11 @@
           </div>
           <button type="submit" class="btn btn-block">Submit</button>
           <button type="reset" class="btn btn-block">Reset</button>
+          <br></br>
         </form>
+        </div>
+      </div>
+    </div>
 
     </div>
     <div class="col-sm-2 well">
@@ -154,18 +173,58 @@
         <button class="btn btn-primary">Info</button>
       </div>
       <div class="well">
+        <p>Sponsored</p>
         <div class="thumbnail">
-        <img src="images/wine_ad_1.png" height="300" width="400" alt="Thierry and Guy wine ad">
+        <a href="#" data-toggle="modal" data-target="#advertModalOne"><img src="images/wine_ad_1.png" alt="Thierry and Guy wine ad"></a>
       </div>
+      <p>Thierry and Guy</p>
       </div>
       <div class="well">
+        <p>Sponsored</p>
         <div class="thumbnail">
-        <img src="images/wine_ad_2.png">
+        <a href="#" data-toggle="modal" data-target="#advertModalTwo"><img src="images/wine_ad_2.png" alt="Scavi and Ray Prosecco"></a>
       </div>
+      <p>London Fashion Week</p>
       </div>
     </div>
   </div>
-</div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <iframe src="https://giphy.com/embed/3d8mZpR1z4NFy6gIBA" width="480" height="416" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/facebook-terminator-zuckerberg-3d8mZpR1z4NFy6gIBA">via GIPHY</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="advertModalOne" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="images/wine_ad_1.png" alt="Thierry and Guy wine ad">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="advertModalTwo" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="images/wine_ad_2.png" alt="Scavi and Ray Prosecco">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
 
 </body>
 </html>

@@ -121,8 +121,15 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="well">
-            <p><a href="#" data-toggle="modal" data-target="#wineModal"><%= wine.name %></a></p>
-            <p><%= wine.tasting_notes %></p>
+            <h4><%= wine.name %></h4><br>
+            <p><strong>Winery: </strong><%= wine.winery %><br>
+              <strong>Vintage: </strong><%= wine.vintage %><br>
+              <strong>Origin: </strong><%= wine.origin %><br>
+              <strong>Price: </strong><%= wine.price %><br>
+              <strong>Rating: </strong><%= wine.rating %><br>
+              <strong>Tasting Notes: </strong><%= wine.tasting_notes %><br>
+              <strong>Other Thoughts: </strong><%= wine.other_notes %>
+            </p>
             <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
               <span class="glyphicon glyphicon-thumbs-up"></span> Like
             </button>
@@ -160,7 +167,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <iframe src="https://giphy.com/embed/3d8mZpR1z4NFy6gIBA" width="480" height="416" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/facebook-terminator-zuckerberg-3d8mZpR1z4NFy6gIBA">via GIPHY</a></p>
+        <iframe src="https://giphy.com/embed/BO5lR6Kw6giXe" width="480" height="348" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -14,6 +14,7 @@ class WinesController < ApplicationController
 
   get '/wines/new' do
     if logged_in
+      @user = current_user
       erb :'wines/new'
     else
       redirect '/login'
@@ -28,7 +29,7 @@ class WinesController < ApplicationController
         @wine.user = current_user
         @wine.save
 
-        redirect "/wines/#{@wine.id}"
+        redirect "/wines"
       end
     else
       redirect '/wines/new'
