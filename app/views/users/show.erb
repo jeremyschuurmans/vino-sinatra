@@ -112,16 +112,31 @@
           </div>
         </div>
       </div>
-      <% @user.wines.each do |wine| %>
+    <% @user.wines.each do |wine| %>
       <div class="row">
         <div class="col-sm-12">
           <div class="well">
-            <p><a href='wines/<%=wine.id%>'><%= wine.name %></a></p>
-            <p><%= wine.tasting_notes %></p>
+            <h3><%= wine.name %></h3><br>
+            <%= wine.id %>
+            <p><strong>Winery: </strong><%= wine.winery %><br>
+              <strong>Vintage: </strong><%= wine.vintage %><br>
+              <strong>Origin: </strong><%= wine.origin %><br>
+              <strong>Price: </strong><%= wine.price %><br>
+              <strong>Rating: </strong><%= wine.rating %><br>
+              <strong>Tasting Notes: </strong><%= wine.tasting_notes %><br>
+              <strong>Other Thoughts: </strong><%= wine.other_notes %>
+            </p>
+            <form method="POST" action="/wines/<%=wine.id%>">
+              <input id="hidden" type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-remove"></span> DELETE WINE</button>
+              <br></br>
+            </form>
           </div>
         </div>
       </div>
-      <% end %>
+    <% end %>
+
       <div id="end-feed">
         <p>No more to see here!</p>
       </div>
