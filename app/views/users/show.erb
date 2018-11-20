@@ -126,8 +126,8 @@
               <strong>Tasting Notes: </strong><%= wine.tasting_notes %><br>
               <strong>Other Thoughts: </strong><%= wine.other_notes %>
             </p>
-            <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myNewModal">
-     <span class="glyphicon glyphicon-pencil"></span> EDIT WINE</button>
+            <button class="btn btn-default btn-lg"><a href="/wines/<%=wine.id%>/edit">
+     <span class="glyphicon glyphicon-pencil"></span> EDIT WINE</a></button>
      <div class="modal fade" id="myNewModal" role="dialog">
        <div class="modal-dialog">
 

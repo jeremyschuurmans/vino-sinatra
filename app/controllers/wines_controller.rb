@@ -59,10 +59,10 @@ class WinesController < ApplicationController
   patch '/wines/:id' do
     if logged_in
       @user = current_user
-      @wine = Wine.find { |wine| wine.user_id == @user.id }
+      @wine = Wine.find(params[:id])
       if !params[:name].empty? && !params[:winery].empty? && !params[:vintage].empty? && !params[:origin].empty? && !params[:price].empty? && !params[:rating].empty? && !params[:tasting_notes].empty? && @wine.user_id == current_user.id
         @wine.update(name: params[:name], winery: params[:winery], vintage: params[:vintage], origin: params[:origin], price: params[:price], rating: params[:rating], tasting_notes: params[:tasting_notes], other_notes: params[:other_notes])
-        redirect "/wines/#{@wine.id}"
+        redirect "/wines"
       else
         redirect "/wines/#{@wine.id}/edit"
       end
