@@ -1,80 +1,59 @@
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <p class="navbar-brand">VINO</p>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#what_is_vino">WHO?</a></li>
-        <li><a href="#what_can_i_do_with_it">WHAT?</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal">LOG ME IN</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid bg-1 text-center">
-  <h3 class="margin">Welcome to Vino</h3>
-  <img src="images/table-wine.png" class="img-responsive img-circle margin" style="display:inline" alt="wine glass on table" width=350 height=350>
-  <h3>The Social Wine Journal</h3>
-</div>
-
-<a id="what_is_vino"?></a>
-<div class="container-fluid bg-2 text-center">
-  <h3 class="margin">What is Vino?</h3>
-  <p>Lorem ipsum dolor amet adipisicing plaid fanny pack anim mlkshk, pabst cray post-ironic bicycle rights tumeric pariatur dreamcatcher. Twee aesthetic bitters, roof party poutine wolf enim ugh blog polaroid tofu venmo. Pug ut retro, blog commodo drinking vinegar authentic. Hot chicken eu tofu VHS ut.</p>
-  <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
-    <span class="glyphicon glyphicon-log-in"></span> LOG IN</button>
-</div>
-
-<a id="what_can_i_do_with_it"></a>
-<div class="container-fluid bg-3 text-center">
-  <h3 class="margin">What can I do with Vino?</h3>
-  <div class="row">
-     <div class="col-sm-4">
-      <p>Quinoa dolore nostrud yuccie, dreamcatcher ugh live-edge mixtape. Vice squid asymmetrical ullamco, selvage wayfarers pop-up lyft offal blue bottle. Officia vaporware keytar live-edge chicharrones magna. Chambray tempor kickstarter ipsum tofu magna sartorial.</p>
-      <img src="images/wine-tasting.png" class="image-responsive" style="width:100%" alt="Random Image">
-    </div>
-    <div class="col-sm-4">
-      <p>Quinoa dolore nostrud yuccie, dreamcatcher ugh live-edge mixtape. Vice squid asymmetrical ullamco, selvage wayfarers pop-up lyft offal blue bottle. Officia vaporware keytar live-edge chicharrones magna. Chambray tempor kickstarter ipsum tofu magna sartorial.</p>
-      <img src="images/wine-journal.png" class="image-responsive" style="width:100%" alt="Random Image">
-    </div>
-    <div class="col-sm-4">
-      <p>Quinoa dolore nostrud yuccie, dreamcatcher ugh live-edge mixtape. Vice squid asymmetrical ullamco, selvage wayfarers pop-up lyft offal blue bottle. Officia vaporware keytar live-edge chicharrones magna. Chambray tempor kickstarter ipsum tofu magna sartorial.</p>
-      <img src="images/wine-social.png" class="image-responsive" style="width:100%" alt="Random Image">
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type-"button" class="close" data-dismiss="modal">&times;</button>
-        <h4>Log In</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VINO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .center {
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 35%;
+  }
+</style>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <strong><a class="navbar-brand" href="#">vino</a></strong>
       </div>
-      <div class="modal-body">
-        <form action="/login" method="POST" role="form">
-          <div class="form-group">
-            <input type="text" name="username" class="form-control" placeholder="Enter your username">
-          </div>
-          <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Enter your password">
-          </div>
-          <button type="submit" class="btn btn-block">Submit</button>
-         </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
-            <p><a href="/signup">OR SIGN UP</a></p>
-        </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
+  <div class="container-fluid center">
+  <form method="POST" action="/signup">
+    <div class="form-group">
+      <label>Name: </label><input type="text" name="name" class="form-control" placeholder="Sam Clemens">
+    </div>
+    <div class="form-group">
+      <label>Email: </label><input type="text" name="email" class="form-control" placeholder="sam@bmail.com">
+    </div>
+    <div class="form-group">
+      <label>Username: </label><input type="text" name="username" class="form-control" placeholder="s_clemens">
+    </div>
+
+    <div class="form-group">
+      <label>Password: </label><input type="password" name="password" class="form-control" placeholder="secure password">
+    </div>
+    <button type="submit" class="btn btn-block">Submit</button>
+  </form>
   </div>
+</body>
