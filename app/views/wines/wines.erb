@@ -29,6 +29,9 @@
     .nav.navbar-nav li a {
       color: white;
     }
+    .nav.navbar-nav li a:hover {
+      background-color: black;
+    }
     .logo {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 30px;
@@ -65,16 +68,18 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button> -->
+      </button>
       <strong><div class="logo">vino</div></strong>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
+        <li><a href="/wines/new">New Wine</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
@@ -82,7 +87,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container text-center">
   <div class="row">
     <div class="col-sm-3 well">
