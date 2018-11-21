@@ -7,16 +7,11 @@ describe ApplicationController do
     it 'loads the homepage' do
       get '/'
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("VINO")
+      expect(last_response.body).to include("vino")
     end
   end
 
   describe "Signup Page" do
-    it 'loads the signup page' do
-      get '/signup'
-      expect(last_response.status).to eq(200)
-    end
-
     it 'signup directs user to vino index' do
       params = {
         :name => "Yukihiro Matzumoto",
@@ -25,7 +20,7 @@ describe ApplicationController do
         :password => "objectsobjectsobjects"
       }
       post '/signup', params
-      expect(last_response.location).to include("/wines")
+      expect(last_response.location).to include('/wines')
     end
 
     it 'does not let a user sign up without a username' do
@@ -36,7 +31,7 @@ describe ApplicationController do
         :password => "objectsobjectsobjects"
       }
       post '/signup', params
-      expect(last_response.location).to include('/signup')
+      expect(last_response.location).to include('/')
     end
 
     it 'does not let a user sign up without an email' do
@@ -47,7 +42,7 @@ describe ApplicationController do
         :password => "objectsobjectsobjects"
       }
       post '/signup', params
-      expect(last_response.location).to include('/signup')
+      expect(last_response.location).to include('/')
     end
 
     it 'does not let a user sign up without a password' do
@@ -58,7 +53,7 @@ describe ApplicationController do
         :password => ""
       }
       post '/signup', params
-      expect(last_response.location).to include('/signup')
+      expect(last_response.location).to include('/')
     end
 
     it 'does not let a logged in user view the signup page' do
@@ -71,16 +66,11 @@ describe ApplicationController do
       }
       post '/signup', params
       get '/signup'
-      expect(last_response.location).to include('/wines')
+      expect(last_response.location).to include('/')
     end
   end
 
   describe "login" do
-    it 'loads the login page' do
-      get '/login'
-      expect(last_response.status).to eq(200)
-    end
-
     it 'loads the wines index after login' do
       user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
       params = {
@@ -91,7 +81,7 @@ describe ApplicationController do
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Welcome,")
+      expect(last_response.body).to include("What's going on today")
     end
 
     it 'does not let user view login page if already logged in' do
@@ -102,7 +92,7 @@ describe ApplicationController do
       }
       post '/login', params
       get '/login'
-      expect(last_response.location).to include("/wines")
+      expect(last_response.location).to include('/')
     end
   end
 
@@ -115,27 +105,29 @@ describe ApplicationController do
       }
       post '/login', params
       get '/logout'
-      expect(last_response.location).to include("/login")
+      expect(last_response.location).to include('/')
     end
 
     it 'does not let a user logout if not logged in' do
       get '/logout'
-      expect(last_response.location).to include("/")
+      expect(last_response.location).to include('/')
     end
 
     it 'does not load /wines if user not logged in' do
       get '/wines'
-      expect(last_response.location).to include("/login")
+      expect(last_response.location).to include('/')
     end
 
     it 'does load /wines if user is logged in' do
       user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
 
-      visit '/login'
+      visit '/'
 
-      fill_in(:username, :with => "hpotter")
-      fill_in(:password, :with => "quidditch")
-      click_button 'submit'
+      within('.navbar') do
+        fill_in(:username, :with => "hpotter")
+        fill_in(:password, :with => "quidditch")
+        click_button 'Log In'
+      end
       expect(page.current_path).to eq('/wines')
     end
   end
@@ -161,9 +153,10 @@ describe ApplicationController do
                           :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                           :other_notes => "Great with grilled meats",
                           :user_id => user.id)
-      get "/users/#{user.slug}"
-      expect(last_response.body).to include("Charles & Charles Rose")
-      expect(last_response.body).to include("Charles & Charles Cabernet Blend")
+      visit "/users/#{user.slug}"
+
+      expect(page).to have_content("Charles & Charles Rose")
+      expect(page).to have_content("Charles & Charles Cabernet Blend")
     end
   end
 
@@ -191,12 +184,14 @@ describe ApplicationController do
                             :other_notes => "Great with grilled meats",
                             :user_id => user2.id)
 
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
-        visit "/wines"
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
+        visit '/wines'
         expect(page.body).to include(wine1.origin)
         expect(page.body).to include(wine2.origin)
       end
@@ -205,7 +200,7 @@ describe ApplicationController do
     context 'logged out' do
       it 'does not let a user view the wines index if not logged in' do
         get '/wines'
-        expect(last_response.location).to include("/login")
+        expect(last_response.location).to include('/')
       end
     end
   end
@@ -215,34 +210,40 @@ describe ApplicationController do
       it 'lets user view new wine form if logged in' do
         user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
 
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
         visit '/wines/new'
         expect(page.status_code).to eq(200)
       end
 
       it 'lets user create a wine if they are logged in' do
         user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
 
         visit '/wines/new'
 
-        fill_in(:name, :with => "Charles & Charles Rose")
-        fill_in(:winery, :with => "Charles & Charles")
-        fill_in(:vintage, :with => "2017")
-        fill_in(:origin, :with => "Columbia Valley, Washington")
-        fill_in(:price, :with => "$12")
-        fill_in(:rating, :with => 9)
-        fill_in(:tasting_notes, :with => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.")
-        fill_in(:other_notes, :with => "Excellent on hot summer days.")
-        click_button 'submit'
+        within ('.col-sm-12 .well') do
+          fill_in(:name, :with => "Charles & Charles Rose")
+          fill_in(:winery, :with => "Charles & Charles")
+          fill_in(:vintage, :with => "2017")
+          fill_in(:origin, :with => "Columbia Valley, Washington")
+          fill_in(:price, :with => "$12")
+          fill_in(:rating, :with => 9)
+          fill_in(:tasting_notes, :with => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.")
+          fill_in(:other_notes, :with => "Excellent on hot summer days.")
+          click_button 'Submit'
+        end
 
         user = User.find_by(:username => "hpotter")
         wine = Wine.find_by(:name => "Charles & Charles Rose")
@@ -255,23 +256,27 @@ describe ApplicationController do
         user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
         user2 = User.create(:name => "Ron Weasley", :username => "rweasley", :email => "ron@hogwarts.edu", :password => "scabbers789")
 
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
 
         visit '/wines/new'
 
-        fill_in(:name, :with => "Charles & Charles Rose")
-        fill_in(:winery, :with => "Charles & Charles")
-        fill_in(:vintage, :with => "2017")
-        fill_in(:origin, :with => "Columbia Valley, Washington")
-        fill_in(:price, :with => "$12")
-        fill_in(:rating, :with => 9)
-        fill_in(:tasting_notes, :with => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.")
-        fill_in(:other_notes, :with => "Excellent on hot summer days.")
-        click_button 'submit'
+        within ('.col-sm-12 .well') do
+          fill_in(:name, :with => "Charles & Charles Rose")
+          fill_in(:winery, :with => "Charles & Charles")
+          fill_in(:vintage, :with => "2017")
+          fill_in(:origin, :with => "Columbia Valley, Washington")
+          fill_in(:price, :with => "$12")
+          fill_in(:rating, :with => 9)
+          fill_in(:tasting_notes, :with => "This wine is a pretty, pale-salmon color. Aromas of strawberry bubblegum, herb, tropical fruit and citrus peel lead to dry fruit flavors, full of papaya, guava and pink-grapefruit notes with a tart finish. It flat-out delivers.")
+          fill_in(:other_notes, :with => "Excellent on hot summer days.")
+          click_button 'Submit'
+        end
 
         user = User.find_by(:id => user.id)
         user2 = User.find_by(:id => user2.id)
@@ -284,23 +289,27 @@ describe ApplicationController do
       it 'does not let a user create a blank journal entry' do
         user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
 
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
 
         visit '/wines/new'
 
-        fill_in(:name, :with => "")
-        fill_in(:winery, :with => "")
-        fill_in(:vintage, :with => "")
-        fill_in(:origin, :with => "")
-        fill_in(:price, :with => "")
-        fill_in(:rating, :with => "")
-        fill_in(:tasting_notes, :with => "")
-        fill_in(:other_notes, :with => "")
-        click_button 'submit'
+        within ('.col-sm-12 .well') do
+          fill_in(:name, :with => "")
+          fill_in(:winery, :with => "")
+          fill_in(:vintage, :with => "")
+          fill_in(:origin, :with => "")
+          fill_in(:price, :with => "")
+          fill_in(:rating, :with => "")
+          fill_in(:tasting_notes, :with => "")
+          fill_in(:other_notes, :with => "")
+          click_button 'Submit'
+        end
 
         expect(Wine.find_by(:name => "")).to eq(nil)
         expect(page.current_path).to eq("/wines/new")
@@ -310,53 +319,7 @@ describe ApplicationController do
     context 'logged out' do
       it 'does not let user view new wine form if not logged in' do
         get '/wines/new'
-        expect(last_response.location).to include("/login")
-      end
-    end
-  end
-
-  describe 'show action' do
-    context 'logged in' do
-      it 'displays a single wine entry' do
-
-        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
-        wine = Wine.create(:name => "Borsao Garnacha",
-                           :winery => "Borsao",
-                           :vintage => "2016",
-                           :origin => "Spain",
-                           :price => "$9",
-                           :rating => 6,
-                           :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
-                           :other_notes => "Would pair well with dark chocolate")
-
-        visit '/login'
-
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
-
-        visit "/wines/#{wine.id}"
-        expect(page.status_code).to eq(200)
-        expect(page.body).to include("DELETE WINE")
-        expect(page.body).to include(wine.tasting_notes)
-        expect(page.body).to include("EDIT WINE")
-      end
-    end
-
-    context 'logged out' do
-      it 'does not let a user view a wine' do
-        user = User.create(:name => "Harry Potter", :username => "hpotter", :email => "harry@hogwarts.edu", :password => "quidditch")
-        wine = Wine.create(:name => "Borsao Garnacha",
-                           :winery => "Borsao",
-                           :vintage => "2016",
-                           :origin => "Spain",
-                           :price => "$9",
-                           :rating => 6,
-                           :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
-                           :other_notes => "Would pair well with dark chocolate",
-                           :user_id => user.id)
-        get "/wines/#{wine.id}"
-        expect(last_response.location).to include("/login")
+        expect(last_response.location).to include('/')
       end
     end
   end
@@ -374,11 +337,13 @@ describe ApplicationController do
                            :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
                            :other_notes => "Would pair well with dark chocolate",
                            :user_id => user.id)
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
         visit '/wines/1/edit'
         expect(page.status_code).to eq(200)
         expect(page.body).to include(wine.tasting_notes)
@@ -407,11 +372,13 @@ describe ApplicationController do
                             :other_notes => "Great with grilled meats",
                             :user_id => user2.id)
 
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
         visit "/wines/#{wine2.id}/edit"
         expect(page.current_path).to include('/wines')
       end
@@ -427,16 +394,20 @@ describe ApplicationController do
                            :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                            :other_notes => "Great with grilled meats",
                            :user_id => 1)
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "rweasley")
-        fill_in(:password, :with => "scabbers789")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "rweasley")
+          fill_in(:password, :with => "scabbers789")
+          click_button 'Log In'
+        end
         visit '/wines/1/edit'
 
         fill_in(:origin, :with => "Columbia Valley, WA, USA")
 
-        click_button 'submit'
+        within ('.col-sm-12 .well') do
+          click_button 'Submit'
+        end
         expect(Wine.find_by(:origin => "Columbia Valley, WA, USA")).to be_instance_of(Wine)
         expect(Wine.find_by(:origin => "Columbia Valley, Washington")).to eq(nil)
         expect(page.status_code).to eq(200)
@@ -453,16 +424,20 @@ describe ApplicationController do
                            :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                            :other_notes => "Great with grilled meats",
                            :user_id => 1)
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "rweasley")
-        fill_in(:password, :with => "scabbers789")
-        click_button 'submit'
+        within ('.navbar') do
+          fill_in(:username, :with => "rweasley")
+          fill_in(:password, :with => "scabbers789")
+          click_button 'Log In'
+        end
         visit '/wines/1/edit'
 
         fill_in(:origin, :with => "")
 
-        click_button 'submit'
+        within ('.col-sm-12 .well') do
+          click_button 'Submit'
+        end
         expect(Wine.find_by(:origin => "Columbia Valley, WA, USA")).to be(nil)
         expect(page.current_path).to eq("/wines/1/edit")
       end
@@ -471,7 +446,7 @@ describe ApplicationController do
     context "logged out" do
       it 'does not load -- requests user to login' do
         get '/wines/1/edit'
-        expect(last_response.location).to include("/login")
+        expect(last_response.location).to include('/')
       end
     end
   end
@@ -489,12 +464,14 @@ describe ApplicationController do
                            :tasting_notes => "Bold, rich and textured but not over the top – it remains wonderfully restrained and focused. Aromas of black cherry, blackberry, and earthy, savory notes of tobacco and herbs, vanilla, and cocoa. A full mouthfeel with a long and supple finish. It's an intense dark blue / purple in color with tremendous purity, depth, and focus. Tannins are elegant, and refined.",
                            :other_notes => "Great with grilled meats",
                            :user_id => 1)
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "rweasley")
-        fill_in(:password, :with => "scabbers789")
-        click_button 'submit'
-        visit 'wines/1'
+        within ('.navbar') do
+          fill_in(:username, :with => "rweasley")
+          fill_in(:password, :with => "scabbers789")
+          click_button 'Log In'
+        end
+        visit "/users/#{user.slug}"
         click_button "DELETE WINE"
         expect(page.status_code).to eq(200)
         expect(Wine.find_by(:origin => "Columbia Valley, Washington")).to eq(nil)
@@ -523,32 +500,18 @@ describe ApplicationController do
                             :other_notes => "Great with grilled meats",
                             :user_id => user2.id)
 
-        visit '/login'
+        visit '/'
 
-        fill_in(:username, :with => "hpotter")
-        fill_in(:password, :with => "quidditch")
-        click_button 'submit'
-        visit "wines/#{wine2.id}"
-        click_button "DELETE WINE"
+        within ('.navbar') do
+          fill_in(:username, :with => "hpotter")
+          fill_in(:password, :with => "quidditch")
+          click_button 'Log In'
+        end
+        visit "/users/#{user2.slug}"
+        page.find('button', text: 'DELETE WINE').click
         expect(page.status_code).to eq(200)
         expect(Wine.find_by(:origin => "Columbia Valley, Washington")).to be_instance_of(Wine)
         expect(page.current_path).to include('/wines')
-      end
-    end
-
-    context "logged out" do
-      it 'does not load let user delete a wine if not logged in' do
-        wine = Wine.create(:name => "Borsao Garnacha",
-                            :winery => "Borsao",
-                            :vintage => "2016",
-                            :origin => "Spain",
-                            :price => "$9",
-                            :rating => 6,
-                            :tasting_notes => "Both on the nose and palate, this Garnacha is mildly angular and pinching, with a sense of rawness brought on by hard tannins. Its foxy plum flavors are jumpy and nervy, finishing peppery and jagged.",
-                            :other_notes => "Would pair well with dark chocolate",
-                            :user_id => 1)
-        visit '/wines/1'
-        expect(page.current_path).to eq("/login")
       end
     end
   end

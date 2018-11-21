@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if logged_in
-      @user = current_user
-      redirect '/wines'
+    if logged_in?
+      redirect back
     else
-      erb :'/users/signup'
+      redirect '/'
     end
   end
 
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
     if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       @user = User.new(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
       if @user.save
-        session[:user_id] = @user.id
+        session[:user_id] = @user.id #logs user in
         redirect '/wines'
       end
     else
@@ -21,8 +20,8 @@ class UsersController < ApplicationController
     end
   end
 
-  patch '/signup' do
-    if logged_in
+  patch '/signup' do  #updates user info when user submits edit account info form
+    if logged_in?
       @user = current_user
       @user.update(name: params[:name], email: params[:email], username: params[:username], password: params[:password])
       @user.save
@@ -31,18 +30,17 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if logged_in
-      @user = current_user
-      redirect '/wines'
+    if logged_in?
+      redirect back
     else
-      erb :'/users/login'
+      redirect '/'
     end
   end
 
   post '/login' do
     @user = User.find_by(username: params[:username])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+    if @user && @user.authenticate(params[:password]) #if user exists and password is valid
+      session[:user_id] = @user.id #logs user in
       redirect '/wines'
     else
       redirect '/'
@@ -50,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if logged_in
+    if logged_in?
       session.destroy
       redirect '/'
     else
@@ -58,13 +56,9 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users/:slug' do
+  get '/users/:slug' do  #user profile page
     @user = User.find_by_slug(params[:slug])
     @user = current_user
-    # @wine = Wine.find { |wine| wine.user_id == @user.id }
-    # binding.pry
-
     erb :'/users/show'
   end
-
 end

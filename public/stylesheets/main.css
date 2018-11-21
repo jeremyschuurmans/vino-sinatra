@@ -1,3 +1,4 @@
+
 /* set gray background color, font */
 
 body {
@@ -5,7 +6,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Set black background color, white text and some padding */
+/* set black background color, white text and some padding */
 
 footer {
   background-color: #8b9dc3;
@@ -18,7 +19,7 @@ footer {
   padding-top: 10px;
 }
 
-/* navbar styles */
+/* navbar styles - set color, format logo, animations for buttons and links */
 
 .navbar {
   background-color: #3b5998;
@@ -52,7 +53,7 @@ footer {
   background-color: #ffffff;
 }
 
-/* center column styles */
+/* center column styles - format forms, buttons */
 
 .col-sm-12 button {
   background-color: #dfe3ee;
@@ -70,7 +71,6 @@ footer {
     color: white;
 }
 .col-sm-12 .form-group {
-  /* margin: 20px; */
   padding-right: 20px;
   padding-left: 20px;
 }
@@ -86,4 +86,31 @@ footer {
 }
 .well h4 {
   padding-bottom: 15px;
+}
+
+/* modal styles */
+
+.modal-header {
+  background-color: #8b9dc3;
+  color: #ffffff;
+}
+.modal-body {
+  background-color: #f7f7f7;
+}
+.modal-body button {
+  background-color: #dfe3ee;
+}
+.modal-body button:hover {
+  background-color: #8b9dc3;
+  color: #ffffff;
+}
+.modal-footer {
+  background-color: #f7f7f7;
+}
+.modal-footer button {
+  background-color: #dfe3ee;
+}
+.modal-footer button:hover {
+  background-color: #8b9dc3;
+  color: #ffffff;
 }
