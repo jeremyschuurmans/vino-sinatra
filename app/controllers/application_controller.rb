@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     if logged_in
       redirect '/wines'
     else
-      erb :index
+      erb :index, :layout => :layout_index
     end
   end
 

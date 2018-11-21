@@ -1,0 +1,61 @@
+.center {
+  margin: 0 auto;
+  padding-top: 100px;
+  width: 35%;
+}
+
+/* navbar styles */
+
+.navbar {
+  background-color: #3b5998;
+  border: 0;
+  border-radius: 0;
+  padding: 10px;
+}
+.navbar-default p {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 40px;
+  color: white;
+}
+.nav.navbar-nav li a {
+  color: white;
+}
+.navbar-form.navbar-right {
+  padding-top: 8px;
+}
+.navbar-form.navbar-right button {
+  background-color: #8b9dc3;
+  border-color: black;
+  font-family: 'Roboto', sans-serif;
+}
+.navbar-form.navbar-right button:hover {
+  background-color: #3b5998;
+  color: white;
+}
+
+/* "made with <heart> by me" */
+
+#credits p {
+  padding-top: 75px;
+  text-align: center;
+}
+.glyphicon.glyphicon-heart {
+  color: red;
+  font-size: 14px;
+}
+
+/* sign up form styles */
+
+.col-sm-12 h1 {
+  text-align: center;
+}
+.col-sm-12 form button {
+  background-color: #dfe3ee;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+}
+.col-sm-12 form button:hover {
+  background-color: #8b9dc3;
+  color: white;
+}

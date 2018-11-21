@@ -1,1 +1,76 @@
+/* set gray background color, font */
 
+body {
+  background-color: #f7f7f7;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Set black background color, white text and some padding */
+
+footer {
+  background-color: #8b9dc3;
+  color: white;
+  padding: 15px;
+}
+.glyphicon-heart {
+  color: red;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+/* navbar styles */
+
+.navbar {
+  background-color: #3b5998;
+  border: 0;
+  border-radius: 0;
+}
+.nav.navbar-nav li a {
+  color: white;
+}
+.nav.navbar-nav li a:hover {
+  background-color: black;
+}
+.logo {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 30px;
+  background-color: #3b5998;
+  color: white;
+  padding-top: 4px;
+  margin-right: 14px;
+}
+.navbar-right:hover {
+  background-color: black;
+}
+
+/* left and right sidebar styles */
+
+.col-sm-2 {
+  background-color: #ffffff;
+}
+.col-sm-3 {
+  background-color: #ffffff;
+}
+
+/* center column styles */
+
+.col-sm-12 button {
+  background-color: #dfe3ee;
+}
+.col-sm-12 button:hover {
+  background-color: #8b9dc3;
+  color: white;
+}
+.col-sm-12 form {
+  margin: 20px;
+  padding: 20px;
+}
+.well {
+  background-color: #ffffff;
+}
+.well p {
+  text-align: center;
+}
+.well h4 {
+  padding-bottom: 15px;
+}

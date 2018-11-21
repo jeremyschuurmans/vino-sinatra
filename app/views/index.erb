@@ -1,121 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>VINO</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<style>
-  .center {
-    margin: 0 auto;
-    padding-top: 100px;
-    width: 35%;
-  }
-  .navbar {
-    background-color: #3b5998;
-    border: 0;
-    border-radius: 0;
-    padding: 10px;
-  }
-  .navbar-default p {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 40px;
-    color: white;
-  }
-  .nav.navbar-nav li a {
-    color: white;
-  }
-  .navbar-form.navbar-right {
-    padding-top: 8px;
-  }
-  .navbar-form.navbar-right button {
-    background-color: #8b9dc3;
-    border-color: black;
-    font-family: 'Roboto', sans-serif;
-  }
-  .navbar-form.navbar-right button:hover {
-    background-color: #3b5998;
-    color: white;
-  }
-  #credits p {
-    padding-top: 75px;
-    text-align: center;
-  }
-  .col-sm-12 h1 {
-    text-align: center;
-  }
-  .col-sm-12 form button {
-    background-color: #dfe3ee;
-    color: black;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 1px;
-  }
-  .col-sm-12 form button:hover {
-    background-color: #8b9dc3;
-    color: white;
-  }
-  .glyphicon.glyphicon-heart {
-    color: red;
-    font-size: 14px;
-  }
-
-
-</style>
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-        </button>
-
-        <p>vino</p>
-
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <form class="navbar-form navbar-right" action="/login" method="POST">
-          <div class="form-group">
-            <input type="text" name="username" class="form-control" placeholder="Username">
-          </div>
-          <div class="form-group">
-            <input type="text" name="password" class="form-control" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-default"><strong>Log In</strong></button>
-        </form>
-      </div>
+<div class="container-fluid center">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Create a New Account</h1>
+      <br></br>
+      <form action="/signup" method="POST">
+        <div class="form-group">
+          <label>Name: (required)</label><input type="text" name="name" class="form-control" placeholder="Sam Clemens" required>
+        </div>
+        <div class="form-group">
+          <label>Email: </label><input type="text" name="email" class="form-control" placeholder="sam@bmail.com">
+        </div>
+        <div class="form-group">
+          <label>Username: (required)</label><input type="text" name="username" class="form-control" placeholder="s_clemens" required>
+        </div>
+        <div class="form-group">
+          <label>Password: (required)</label><input type="password" name="password" class="form-control" placeholder="secure password" required>
+        </div>
+        <button type="submit" class="btn btn-block"><strong>Submit</strong></button>
+      </form>
     </div>
-  </nav>
-  <div class="container-fluid center">
-    <div class="row">
-      <div class="col-sm-12">
-        <h1>Create a New Account</h1>
-        <br></br>
-  <form action="/signup" method="POST">
-    <div class="form-group">
-      <label>Name: (required)</label><input type="text" name="name" class="form-control" placeholder="Sam Clemens" required>
-    </div>
-    <div class="form-group">
-      <label>Email: </label><input type="text" name="email" class="form-control" placeholder="sam@bmail.com">
-    </div>
-    <div class="form-group">
-      <label>Username: (required)</label><input type="text" name="username" class="form-control" placeholder="s_clemens" required>
-    </div>
-
-    <div class="form-group">
-      <label>Password: (required)</label><input type="password" name="password" class="form-control" placeholder="secure password" required>
-    </div>
-    <button type="submit" class="btn btn-block"><strong>Submit</strong></button>
-  </form>
   </div>
-  </div>
-  <div id="credits">
-    <p>MADE WITH <span class="glyphicon glyphicon-heart"></span> BY <strong>JEREMY SCHUURMANS</strong></p>
-  </div>
-  </div>
-</body>
+</div>
