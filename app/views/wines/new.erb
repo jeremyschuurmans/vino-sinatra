@@ -11,12 +11,15 @@
         </div>
       </div>
     </nav>
-
     <div class="container text-center">
       <div class="row">
         <div class="col-sm-3 well">
           <div class="well">
-            <h4><%= @user.name %>'s Vino</h4>
+            <%if current_user.plural?%>
+              <h4><%=current_user.name%>' Vino</h4>
+            <%else%>
+              <h4><%=current_user.name%>'s Vino</h4>
+            <%end%>
             <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
           </div>
           <div class="alert alert-success fade in">

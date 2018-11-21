@@ -9,14 +9,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
+    if !params[:username].empty? && !params[:password].empty?
       @user = User.new(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
       if @user.save
         session[:user_id] = @user.id #logs user in
         redirect '/wines'
       end
     else
-      redirect '/signup'
+      redirect '/'
     end
   end
 

@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def logged_in?
-      !!current_user #"not not current_user" == "is current user"
+      !!current_user #"not not current_user" == "is current user" if it is current_user, user is logged in.
     end
   end
 end
