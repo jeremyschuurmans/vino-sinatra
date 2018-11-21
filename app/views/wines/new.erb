@@ -30,7 +30,6 @@
           <p><a href="https://en.wikipedia.org/wiki/Wine" target="_blank">Wikipedia</a></p>
         </div>
     <div class="col-sm-7">
-
       <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
@@ -43,37 +42,37 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="well">
-        <form action="/wines" method="POST">
-          <div class="form-group">
-            <label>Name: </label><input id="textbox" type="text" name="name" class="form-control" >
+            <form action="/wines" method="POST">
+              <div class="form-group">
+                <label>Name: </label><input id="textbox" type="text" name="name" class="form-control" placeholder="Ada Pinot Noir">
+              </div>
+              <div class="form-group">
+                <label>Winery: </label><input id="textbox" type="text" name="winery" class="form-control" placeholder="Lovelace Vineyard & Winery">
+              </div>
+              <div class="form-group">
+                <label>Vintage: </label><input id="textbox" type="text" name="vintage" class="form-control" placeholder="2017">
+              </div>
+              <div class="form-group">
+                <label>Origin: </label><input id="textbox" type="text" name="origin" class="form-control" placeholder="United Kingdom">
+              </div>
+              <div class="form-group">
+                <label>Price: </label><input id="textbox" type="text" name="price" class="form-control" placeholder="$14.99">
+              </div>
+              <div class="form-group">
+                <label>Rating: </label><input id="textbox" type="text" name="rating" class="form-control" placeholder="8">
+              </div>
+              <div class="form-group">
+                <label>Tasting Notes: </label><textarea name="tasting_notes" class="form-control" placeholder="Oodles of black cherry and sour cherry fill the aroma and flood the flavors of this full-bodied, concentrated and deeply fruity wine. The ripeness is balanced by good fruit acidity, making the wine both seductive and refreshing to sip."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Other Thoughts: </label><textarea name="other_notes" class="form-control" placeholder="Excellent for drinking while constructing algorithms."></textarea>
+              </div>
+              <button type="submit" class="btn btn-lg">Submit</button>
+              <button type="reset" class="btn btn-lg">Reset</button>
+            </form>
           </div>
-          <div class="form-group">
-            <label>Winery: </label><input id="textbox" type="text" name="winery" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label>Vintage: </label><input id="textbox" type="text" name="vintage" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label>Origin: </label><input id="textbox" type="text" name="origin" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label>Price: </label><input id="textbox" type="text" name="price" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label>Rating: </label><input id="textbox" type="text" name="rating" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label>Tasting Notes: </label><textarea name="tasting_notes" class="form-control"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Other Thoughts: </label><textarea name="other_notes" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-lg">Submit</button>
-          <button type="reset" class="btn btn-lg">Reset</button>
-        </form>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
     <div id="myAccountFormModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
