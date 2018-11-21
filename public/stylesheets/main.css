@@ -61,9 +61,22 @@ footer {
   background-color: #8b9dc3;
   color: white;
 }
-.col-sm-12 form {
-  margin: 20px;
-  padding: 20px;
+.col-sm-12 a {
+  text-decoration: none;
+  color: black;
+}
+.col-sm-12 a:hover {
+   background-color: #8b9dc3;
+    color: white;
+}
+.col-sm-12 .form-group {
+  /* margin: 20px; */
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.col-sm-12 btn-block {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 .well {
   background-color: #ffffff;

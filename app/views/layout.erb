@@ -21,68 +21,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <strong><div class="logo">vino</div></strong>
+      <div class="logo"><strong>vino</strong></div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="/wines/new">New Wine</a></li>
-        <li><a href="/users/<%=current_user.slug%>">My Profile</a></li>
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container text-center">
-  <div class="row">
-    <div class="col-sm-3 well">
-      <div class="well">
-        <p><a href="/users/show">My Profile</a></p>
-        <img src="https://picsum.photos/65/65/?random" class="img-circle" alt="Avatar">
-      </div>
-      <div class="alert alert-success fade in">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <p><strong>Hey, there!</strong></p>
-        This is your feed! View and like all these delicious wines!
-      </div>
-      <h4>Learn More!</h4>
-      <p><a href="https://winefolly.com/" target="_blank">Wine Folly</a></p>
-      <p><a href="https://www.winespectator.com/" target="_blank">Wine Spectator</a></p>
-      <p><a href="https://en.wikipedia.org/wiki/Wine" target="_blank">Wikipedia</a></p>
-    </div>
-    <div class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default text-left">
-            <div class="panel-body">
-              <p contenteditable="true">What's in your brain, <%= current_user.name %>?</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    <%= yield %>
+  <%= yield %>
     <div class="col-sm-2 well">
       <div class="thumbnail">
         <p>Upcoming Events:</p>
         <img src="https://picsum.photos/400/?random" alt="Avatar">
-        <p><strong>Paris</strong></p>
-        <p>Fri. 27 November 2015</p>
-        <button class="btn btn-primary">Info</button>
+        <p><strong>Wine & Art Fest</strong></p>
+        <p>May to November 2018</p>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">Info</button>
       </div>
       <div class="well">
         <p>Sponsored</p>
         <div class="thumbnail">
-          <a href="#" data-toggle="modal" data-target="#advertModalOne"><img src="images/wine_ad_1.png" alt="Thierry and Guy wine ad"></a>
+          <a href="#" data-toggle="modal" data-target="#advertModalOne"><img src="/images/wine_ad_1.png" alt="Thierry and Guy wine ad"></a>
         </div>
        <p>Thierry and Guy</p>
       </div>
       <div class="well">
         <p>Sponsored</p>
         <div class="thumbnail">
-          <a href="#" data-toggle="modal" data-target="#advertModalTwo"><img src="images/wine_ad_2.png" alt="Scavi and Ray Prosecco"></a>
+          <a href="#" data-toggle="modal" data-target="#advertModalTwo"><img src="/images/wine_ad_2.png" alt="Scavi and Ray Prosecco"></a>
         </div>
         <p>London Fashion Week</p>
       </div>
@@ -93,7 +53,19 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <iframe src="https://giphy.com/embed/BO5lR6Kw6giXe" width="480" height="348" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <iframe src="https://giphy.com/embed/BO5lR6Kw6giXe" width="568" height="348" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="eventModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2805.7820828922554!2d-123.01822411980723!3d45.31282745165417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495404006c6d5d3%3A0xc87c2120ecce9117!2sROCO+Winery!5e0!3m2!1sen!2sus!4v1542777355882" width="570" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -105,7 +77,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="images/wine_ad_1.png" alt="Thierry and Guy wine ad">
+        <img src="/images/wine_ad_1.png" alt="Thierry and Guy wine ad">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -117,7 +89,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="images/wine_ad_2.png" alt="Scavi and Ray Prosecco">
+        <img src="/images/wine_ad_2.png" alt="Scavi and Ray Prosecco">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -125,11 +97,6 @@
     </div>
   </div>
 </div>
-<footer class="container-fluid text-center">
-  <div id="credits">
-    <p>MADE WITH <span class="glyphicon glyphicon-heart"></span> BY <strong>JEREMY SCHUURMANS</strong></p>
-  </div>
-</footer>
 
 </body>
 </html>
