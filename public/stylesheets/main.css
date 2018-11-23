@@ -4,6 +4,7 @@
 body {
   background-color: #f7f7f7;
   font-family: 'Roboto', sans-serif;
+  padding-top: 70px;
 }
 
 /* set black background color, white text and some padding */
@@ -25,6 +26,10 @@ footer {
   background-color: #3b5998;
   border: 0;
   border-radius: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 .nav.navbar-nav li a {
   color: white;
