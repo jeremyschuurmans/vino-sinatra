@@ -88,9 +88,15 @@ class WinesController < ApplicationController
   end
 
   delete '/wines/:id' do
-    if logged_in? && @wine.user_id == current_user.id
-      @wine = Wine.delete(params[:id])
+    if logged_in?
+      @user = current_user
+      @wine = Wine.find(params[:id])
+      if @wine.user_id == current_user.id
+         @wine = Wine.delete(params[:id])
+         redirect '/wines'
+      else
         redirect '/wines'
+      end
     else
       redirect back
     end
