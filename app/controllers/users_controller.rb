@@ -12,8 +12,10 @@ class UsersController < ApplicationController
     if !params[:username].empty? && !params[:password].empty?
       @user = User.new(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
       if @user.save
-        session[:user_id] = @user.id #logs user in
+        session[:user_id] = @user.id #logs user in (adds user id to session hash)
         redirect '/wines'
+      else
+        redirect '/'
       end
     else
       redirect '/'
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
   post '/login' do
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password]) #if user exists and password is valid
-      session[:user_id] = @user.id #logs user in
+      session[:user_id] = @user.id #logs user in (adds user_id to session hash)
       redirect '/wines'
     else
       redirect '/'

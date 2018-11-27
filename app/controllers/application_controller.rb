@@ -20,11 +20,11 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def current_user
-      @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]  #if current_user is called the first time, finds session[:user_id] and assigns session to @current_user
+      @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]  #if @current_user returns false, calls User.find_by_id if User.id exists in session hash.
     end
 
     def logged_in?
-      !!current_user #"not not current_user" == "is current user" if it is current_user, user is logged in.
+      !!current_user #since current_user returns true, !current_user would make current_user false, but !!current_user makes it true. Basically user is logged in if user is "not not the current user"
     end
   end
 end

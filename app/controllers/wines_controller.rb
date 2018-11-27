@@ -50,6 +50,8 @@ class WinesController < ApplicationController
       @wine = Wine.find_by(id: params[:id])
       if @wine.user_id == current_user.id
         erb :'wines/edit'
+      else
+        redirect '/wines'
       end
     else
       redirect '/'
@@ -68,7 +70,14 @@ class WinesController < ApplicationController
           !params[:rating].empty? &&
           !params[:tasting_notes].empty? &&
           @wine.user_id == current_user.id
-          @wine.update(name: params[:name], winery: params[:winery], vintage: params[:vintage], origin: params[:origin], price: params[:price], rating: params[:rating], tasting_notes: params[:tasting_notes], other_notes: params[:other_notes])
+          @wine.update(name: params[:name],
+                       winery: params[:winery],
+                       vintage: params[:vintage],
+                       origin: params[:origin],
+                       price: params[:price],
+                       rating: params[:rating],
+                       tasting_notes: params[:tasting_notes],
+                       other_notes: params[:other_notes])
           redirect "/wines"
       else
         redirect "/wines/#{@wine.id}/edit"
@@ -79,11 +88,11 @@ class WinesController < ApplicationController
   end
 
   delete '/wines/:id' do
-    if logged_in?
+    if logged_in? && @wine.user_id == current_user.id
       @wine = Wine.delete(params[:id])
         redirect '/wines'
     else
-      redirect '/'
+      redirect back
     end
   end
 end
